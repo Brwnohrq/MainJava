@@ -12,7 +12,7 @@ public class Main{
        }
        else
        {
-           System.out.println("You earn more then 3000.00 Dolars per month");
+           System.out.println("You earn more then 300000 Dolars per month");
        }
        scanner.close();
 
