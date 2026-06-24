@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main{
@@ -17,9 +18,14 @@ public class Main{
         double notaHistoria = scanner.nextDouble();
         System.out.println("Digite sua nota de Geografia");
         double notaGeografia = scanner.nextDouble();
-        double media = (notaGeografia + notaHistoria + notaMatematica + notaPortugues) /4;
+        System.out.println("Digite o numero de faltas que teve esse ano");
+        double numeroFaltas = scanner.nextDouble();
 
-        if (media >=7.0){
+        double media = (notaGeografia + notaHistoria + notaMatematica + notaPortugues) /4;
+        if (numeroFaltas >=100){
+            System.out.println("Reprovado por falta");
+        }
+        else if (media >=7.0){
             System.out.println("Voce foi Aprovado " + "sua media foi " + media);
         }
         else if (media >=5 && media <7) {
