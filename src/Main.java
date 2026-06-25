@@ -1,49 +1,57 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
+public class Main{
+    public static void main (String []args){
 
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o Primeiro Numero");
-        long numero1 = scanner.nextLong();
 
-        System.out.println("Digite o Segundo Numero");
-        long numero2 = scanner.nextLong();
 
-        System.out.println("Digite o Terceiro Numero");
-        long numero3 = scanner.nextLong();
 
-        System.out.println("Digite o Quarto Numero");
-        long numero4 = scanner.nextLong();
+    Scanner scanner = new Scanner(System.in);
 
-        long maior = numero1;
-        long menor = numero1;
-
-        if (numero2 < menor) {
-            menor = numero2;
+        System.out.println("Digite o numero de faltas que teve esse ano");
+       int  numeroFaltas = scanner.nextInt();
+        if (numeroFaltas >=100) {
+            System.out.println("voce reprovou");
+            return;
         }
-        if (numero2 > maior) {
-            maior = numero2;
+        else{
+            System.out.println(
+                    "Voce nao reprovou por falta, voce teve apenas " + numeroFaltas + " Faltas"
+            );
         }
 
-        if (numero3 < menor) {
-            menor = numero3;
-        }
-        if (numero3 > maior) {
-            maior = numero3;
-        }
+        System.out.println("Digite sua nota de Matematica");
+        double notaMatematica = scanner.nextDouble();
+        System.out.println("Digite sua nota de Portugues");
+        double notaPortugues = scanner.nextDouble();
+        System.out.println("Digite sua nota de Historia");
+        double notaHistoria = scanner.nextDouble();
+        System.out.println("Digite sua nota de Geografia");
+        double notaGeografia = scanner.nextDouble();
+        double media = (notaGeografia + notaHistoria + notaMatematica + notaPortugues) /4;
+        double mediafinal = media;
+        String mediafinal1 =  (mediafinal >= 7) ? "Aprovado" : "Reprovado";
+        System.out.println(mediafinal1 + " Com Media final " +media);
 
-        if (numero4 < menor) {
-            menor = numero4;
+     /*   if (numeroFaltas >=100){
+            System.out.println("Reprovado por falta");
         }
-        if (numero4 > maior) {
-            maior = numero4;
+        else if (media >=7.0){
+            System.out.println("Voce foi Aprovado " + "sua media foi " + media);
         }
+        else if (media >=5 && media <7) {
+            System.out.println("Voce esta em Recuperacao " + "sua media foi " + media);
+        }
+        else {
+            System.out.println("Voce foi Reprovado " + "Sua media foi " + media);
+        }*/
 
-        System.out.println("Maior numero é " + maior);
-        System.out.println("Menor numero é " + menor);
+       scanner.close();
 
-        scanner.close();
+
+
+
     }
 }
