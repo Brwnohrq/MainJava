@@ -10,6 +10,18 @@ public class Main{
 
     Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Digite o numero de faltas que teve esse ano");
+       int  numeroFaltas = scanner.nextInt();
+        if (numeroFaltas >=100) {
+            System.out.println("voce reprovou");
+            return;
+        }
+        else{
+            System.out.println(
+                    "Voce nao reprovou por falta, voce teve apenas " + numeroFaltas + " Faltas"
+            );
+        }
+
         System.out.println("Digite sua nota de Matematica");
         double notaMatematica = scanner.nextDouble();
         System.out.println("Digite sua nota de Portugues");
@@ -18,11 +30,12 @@ public class Main{
         double notaHistoria = scanner.nextDouble();
         System.out.println("Digite sua nota de Geografia");
         double notaGeografia = scanner.nextDouble();
-        System.out.println("Digite o numero de faltas que teve esse ano");
-        double numeroFaltas = scanner.nextDouble();
-
         double media = (notaGeografia + notaHistoria + notaMatematica + notaPortugues) /4;
-        if (numeroFaltas >=100){
+        double mediafinal = media;
+        String mediafinal1 =  (mediafinal >= 7) ? "Aprovado" : "Reprovado";
+        System.out.println(mediafinal1 + " Com Media final " +media);
+
+     /*   if (numeroFaltas >=100){
             System.out.println("Reprovado por falta");
         }
         else if (media >=7.0){
@@ -33,7 +46,7 @@ public class Main{
         }
         else {
             System.out.println("Voce foi Reprovado " + "Sua media foi " + media);
-        }
+        }*/
 
        scanner.close();
 
