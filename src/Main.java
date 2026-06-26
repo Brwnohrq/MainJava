@@ -40,18 +40,7 @@ public class Main{
     }}
 
 
-     /*   if (numeroFaltas >=100){
-            System.out.println("Reprovado por falta");
-        }
-        else if (media >=7.0){
-            System.out.println("Voce foi Aprovado " + "sua media foi " + media);
-        }
-        else if (media >=5 && media <7) {
-            System.out.println("Voce esta em Recuperacao " + "sua media foi " + media);
-        }
-        else {
-            System.out.println("Voce foi Reprovado " + "Sua media foi " + media);
-        }*/
+
 
 
 
