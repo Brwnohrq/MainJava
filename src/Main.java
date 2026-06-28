@@ -1,137 +1,158 @@
 import java.util.Scanner;
-public class Main{
+public class Main {
     public static void main(String[] args) {
+
+        System.out.println("Sistema de login Banco Chat sv1");
+        System.out.println("===========================");
+        System.out.println("Opcao 1 = Acessar a Conta");
+//        System.out.println("Opcao 2 = Cadastras a Conta");
         Scanner scanner = new Scanner(System.in);
+        int opcaologin = scanner.nextInt();
+        String loginCorreto = "admin";
+        String passwordCorreto = "1234a";
+        double saldoFinal;
+        double saldoInicial = 1500;
+        double saldoPosSaque;
+        switch (opcaologin) {
 
-        System.out.println("                     ");
-        System.out.println("====================");
-        System.out.println("  BANCO CHAT GPT ");
-        System.out.println("====================");
-        System.out.println("                     ");
-        System.out.println("Opcao 1 = Fazer um saque");
-        System.out.println("Opcao 2 = Fazer um deposito");
-        System.out.println("Opcao 3 = Extrato financeiro");
-        System.out.println("Opcao 4 = Area Pix");
-        System.out.println("Opcao 5 = Suporte tecnico");
-
-
-        int opcaoBancario = scanner.nextInt();
-        double saldoBanco = 1500;
-        double valorSaque = 0;
-        double valorDeposito =0;
-        switch (opcaoBancario) {
             case 1:
-                System.out.println("Voce Digitou 1: Fazer um saque");
-                System.out.println("-----------------");
-                System.out.println("Digite o valor do saque");
-                valorSaque = scanner.nextDouble();
-                if (valorSaque > saldoBanco){
-                    System.out.println("Voce tem apenas " + saldoBanco + " disponivel para saque");
+                System.out.println("Digite seu email ou usario de login");
+                String login = scanner.next();
+                if (!login .equals(loginCorreto)) {
+                    System.out.println("Usuario invalido");
+                    break;
+                } else {
+                      System.out.println("Digite sua senha");
+                }
+                String password = scanner.next();
+                if (!password .equals(passwordCorreto)) {
+                    System.out.println("Senha invalida");
+                    break;
                 }
                 else {
-                    System.out.println("voce sacou " + valorSaque + " reais");
-                    System.out.println("Saldo Restante Atual é de " + (saldoBanco - valorSaque));
+                    System.out.println("Seja bem vindo " + loginCorreto);
                 }
+                System.out.println( "==================");
+                System.out.println("Menu Do Banco SVB1:");
+                System.out.println("===================");
+                System.out.println("Opcao 1 = Fazer um Deposito ");
+                System.out.println("Opcao 2 = Fazer um Saque ");
+                System.out.println("Opcao 3 = Fazer um Pix ");
+                System.out.println("Opcao 4 = Consultar Saldo");
+
+                int opcaoLogin = scanner.nextInt();
+        switch (opcaoLogin) {
+
+            case 1:
+                System.out.println("Voce escolheu fazer um Deposito");
+                System.out.println("================================");
+                System.out.println("           DEPOSITO");
+                System.out.println("                                  ");
+                System.out.println(" => Qual o valor do seu Deposito? <= ");
+                System.out.println("                                   ");
+                double valorDeposito = scanner.nextDouble();
+                if (valorDeposito <=0){
+                    System.out.println("$ERROO voce nao pode depositar esse tipo de valor");
+                    break;
+                }
+                System.out.println("=> Voce esta depositando " + valorDeposito);
+                System.out.println("                                        ");
+                System.out.println("=> Seu saldo era de " + saldoInicial);
+                System.out.println("                                        ");
+                saldoFinal = (saldoInicial += valorDeposito);
+                System.out.println("                                         ");
+                System.out.println(" *** Agora seu saldo atual é " + saldoFinal + " ***");
+                System.out.println("                                          ");
+
 
                 break;
 
-
             case 2:
-                System.out.println("Voce Digitou 2: Fazer um deposito");
-                System.out.println("Qual o valor do deposito?");
-                valorDeposito = scanner.nextDouble();
-                System.out.println("Voce acabou de depositar " + valorDeposito + " reais");
-                System.out.println("Confirmando o Valor do Deposito de " + valorDeposito);
-                System.out.println("Seu Saldo Atual é de " + (valorDeposito + saldoBanco));
+                System.out.println("Voce escolheu fazer um Saque");
+                System.out.println("                            ");
+                System.out.println("                   SAQUE           ");
+                System.out.println("=> Qual o valor do Saque que quer fazer? <=");
+                double valorSaque = scanner.nextDouble();
+                if (valorSaque <=0){
+                    System.out.println("voce nao pode sacar esse tipo de valor");
+                    break;
+                }
+                else if (valorSaque >saldoInicial){
+                    System.out.println("voce nao tem esse saldo, tem apenas " + saldoInicial);
+                }
 
+                else {
+
+                System.out.println("Voce esta sacando o valor de " + valorSaque);
+                    System.out.println("                         ");
+                System.out.println("Seu saldo antes do saque era " + saldoInicial);
+                saldoPosSaque = (saldoInicial -= valorSaque);
+                System.out.println("*** Seu saque apos o saldo é de " + saldoPosSaque + " ***");
+            }
                 break;
 
 
             case 3:
-
-                System.out.println("Extrato Financeiro");
-                System.out.println("-------------------");
-                System.out.println("Escolha uma opcao abaixo");
-                System.out.println("Opcao 1 = Movimentacoes Bancarias");
-                System.out.println("Opcao 2 = Entradas");
-                System.out.println("Opcao 3 = Saidas");
-                System.out.println("Opcao 4 = Informe de Rendimentos");
-
-                int Opcao = scanner.nextInt();
-                switch (Opcao) {
-                    case 1:
-                    System.out.println("Movimentacao Bancarias");
-                        System.out.println("Voce Fez um Saque " + valorSaque + "Reais");
-                        System.out.println("Voce Fez um Deposito De " +valorDeposito + " Reais");
-                        break;
-                    case 2:
-                    System.out.println("Opcao 2 = Entradas");
-                        System.out.println("Em manutencao, tente novamente mais tarde" );
-                        break;
-                    case 3:
-                    System.out.println("Opcao 3 = Saidas");
-                        System.out.println("Em manutencao, tente novamente mais tarde" );
-                        break;
-                    case 4:
-                    System.out.println("Opcao 4 = Informe de rendimentos");
-                        System.out.println("Em manutencao, tente novamente mais tarde" );
-                        break;
-                    default:System.out.println("Opcao Invalida");
-                }
-
-                break;
-            case 4:
-                System.out.println("Area PIX");
-                System.out.println("Escolha uma das opcoes abaixo");
+                System.out.println(" ===== Area PIX ===== ");
+                System.out.println("                       ");
                 System.out.println("Opcao 1 = Enviar um PIX");
-                System.out.println("Opcao 2 = Cobrar um PIX");
-                System.out.println("Opcao 3 = Gerar Chave Aleatoria");
+                System.out.println("Opcao 2 = Receber um PIX");
 
                 int opcaoPix = scanner.nextInt();
-                switch (opcaoPix) {
+                switch (opcaoPix){
                     case 1:
-                    System.out.println("Enviar um PIX");
-                        System.out.println("Digite a chave PIX");
-                    double ChavePix = scanner.nextDouble();
-                        System.out.println("Digite o Valor do PIX");
-                        double ValorPix = scanner.nextDouble();
-                        if (ValorPix > saldoBanco){
-                            System.out.println("Voce tem apenas o limite de " + saldoBanco);
+                        System.out.println("Informe a chave pix");
+                        double chavePix = scanner.nextDouble();
+                        System.out.println("a chave pix é " + chavePix);
+                        System.out.println("informe o valor que deseja enviar");
+                        double valorPix = scanner.nextDouble();
+                        if (valorPix <=0){
+                            System.out.println("voce nao pode enviar um pix nesse valor");
                         }
-                        else{
-                        System.out.println("Voce enviou um Pix de " + ValorPix + " Para a chave " + ChavePix);
-                        System.out.println("Seu Saldo Bancario é " + (saldoBanco - ValorPix));}
+                        else if (valorPix > saldoInicial){
+                            System.out.println("Seu limite de Pix é de " + saldoInicial);
+                        }
+                        else {
+                            System.out.println("Aguardando Pagamento");
+                            System.out.println("Pix enviado com sucesso");
+                            double saldoPosPix = (saldoInicial -= valorPix);
+                            System.out.println("Seu Saldo atual é de " + saldoPosPix);
+                        }
                         break;
                     case 2:
-                    System.out.println("Cobrar um PIX");
-                        System.out.println("Digite o Valor que quer Cobrar");
-                        double ValorCobrar = scanner.nextDouble();
-                        System.out.println("Digite o numero da pessoa que quer cobrar(Somente os numeros)");
-                        int NumeroCobranca = scanner.nextInt();
-                        System.out.println("Voce esta cobrando o numero " + NumeroCobranca);
-                        System.out.println("No Valor total de " + ValorCobrar);
-                        break;
-                    case 3:
-                    System.out.println("Gerar chave aleatoria");
-                        System.out.println("ashuafhugalsj123hfafsuasfijas");
-                        System.out.println("Chave aleatoria gerada com sucesso");
-                    break;
-                    default:
-                        System.out.println("Opcao Invalida");
+                        System.out.println("Informe o Valor que deseja receber");
+                        double valorPixReceber = scanner.nextDouble();
+                        System.out.println("o valor que vai receber é " +valorPixReceber);
+                        System.out.println("Gerando Chave Pix para cobrança");
+                        System.out.println("Chave pix para cobranca é PAGAADIVIDACALOTEIRO");
                         break;
                 }
-        break;
-            case 5:
-                System.out.println("Suporte tecnico");
-                System.out.println("Digite o seu CPF");
-                long Cpf = scanner.nextLong();
-                System.out.println("Seu CPF é " + Cpf + "Aguarda um momento..");
-                break;
 
+                    case 4:
+                        System.out.println("CONSULTAR SALDO");
+                        System.out.println("==================");
+                        System.out.println("SALDO NA CONTA");
+                        System.out.println(" ");
+                        System.out.println("Valor do Saldo na Conta atual é de R$" +saldoInicial + "reais");
+                        System.out.println("====================");
+                        break;
             default:
-                System.out.println("Escolha uma das alternativas acima");
+                System.out.println("Opcao invalida");
 
 
-            scanner.close();
+
+        }
+
+
+//            case 2:
+//
+//                System.out.println("Digite um email para cadastrar");
+//                String emailCadastro = scanner.next();
+//                System.out.println("Digite uma senha para o Cadastro");
+//                password = scanner.next();
+//                System.out.println("Usuario Cadastrado com sucesso");
+//                System.out.println("Seja bem vindo " + emailCadastro);
+//
+                scanner.close();
         }
     }}
