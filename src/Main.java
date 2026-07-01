@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -7,11 +8,14 @@ public class Main {
 
         //variaveis
         double valorDeposito =0;
-        double saldo = 50;
+        double valorSaque =0;
+        double valorPix =0;
+        double saldo = 1000.;
+        int confirmacao =0;
+        boolean repetirDeposito = true;
+
         String historico = "";
-
-
-
+        String chavePix = "";
 
 
 
@@ -19,61 +23,124 @@ public class Main {
             System.out.println("BANCO SCVB1 2.0 WHILE");
             System.out.println("");
             while (true) {
-            System.out.println("MENU INICIAL");
-            System.out.println("1 = DEPOSITO");
-            System.out.println("2 = SAQUE");
-            System.out.println("3 = PIX");
-            System.out.println("4 = EXTRATO");
-            System.out.println("5 = SAIR DO APLICATIVO");
+                System.out.println("=====================");
+                System.out.println("TELA INICIAL BANCO V1");
+                System.out.println("=====================");
+                System.out.println("");
+                System.out.println("💰Digite 1 = DEPOSITO");
+                System.out.println("💸Digite 2 = SAQUE");
+                System.out.println("📱Digite 3 = PIX");
+                System.out.println("🗓️Digite 4 = EXTRATO");
+                System.out.println("📤Digite 5 = SAIR DO APLICATIVO");
 
-            int iniciar = scanner.nextInt();
+                int iniciar = scanner.nextInt();
 
-            switch (iniciar){
+                switch (iniciar) {
+                    case 1:
+                        repetirDeposito = true;
 
-                case 1:
-                    System.out.println("AREA DE DEPOSITO");
-                    System.out.println("");
-                    System.out.println("Qual o valor que quer Depositar na conta?");
-                    valorDeposito = scanner.nextDouble();
-                    if (valorDeposito <0) {
-                        System.out.println("Voce nao pode depositar esse tipo de valor");
+                        while (repetirDeposito) {
+                            System.out.println("==================");
+                            System.out.println("💰AREA DE DEPOSITO");
+                            System.out.println("==================");
+                            System.out.println("");
+
+                            System.out.println("Qual valor o senhor deseja depositar?");
+                            double valorDepositar = scanner.nextDouble();
+
+                            if (valorDepositar <= 0) {
+                                System.out.println("ERRO! VALOR INVALIDO 🛑");
+                                continue;
+                            }
+
+                            System.out.printf("Voce gostaria de depositar R$ = %.2f ? %n", valorDepositar);
+                            System.out.println("Digite 1 = SIM");
+                            System.out.println("Digite 2 = NAO");
+
+                            confirmacao = scanner.nextInt();
+
+                            switch (confirmacao) {
+                                case 1:
+                                    System.out.println("Aguardando Deposito.");
+                                    saldo += valorDepositar;
+                                    historico += "DEPOSITO R$= " + valorDepositar + "\n";
+
+                                    System.out.printf("DEPOSITO FEITO COM SUCESSO: R$ %.2f %n", valorDepositar);
+                                    System.out.printf("Saldo atual: R$ %.2f %n", saldo);
+
+                                    repetirDeposito = false;
+                                    break;
+
+                                case 2:
+                                    System.out.println("OK, vamos tentar novamente...");
+                                    break;
+
+                                default:
+                                    System.out.println("Opcao invalida");
+                            }
+                        }
                         break;
-                    }
 
-
-                    else {
-                        System.out.println("Voce depositou " +valorDeposito);
-                        saldo += valorDeposito;
-                        System.out.println("DEPOSITO: + R$ "  + saldo);
-                        historico += ("DEPOSITO: + R$ " + valorDeposito + "\n");
-                        System.out.println("Voltando ao Menu inicial");
+                    case 2:
+                        System.out.println("AREA DE SAQUE");
                         System.out.println("");
+                        System.out.println("Qual o valor deseja Sacar da conta");
+                        valorSaque = scanner.nextDouble();
+                        if (valorSaque > saldo) {
+                            System.out.println("Voce nao tem dinheiro suficiente pra sacar, seu saldo é apenas " + saldo + " RS");
+                            break;
 
-                    }
-                    break;
+                        } else {
+                            System.out.println("Voce quer sacar " + valorSaque + " correto?");
+                            System.out.println("Processando saque, aguarde.");
+                            saldo -= valorSaque;
+                            System.out.println("SAQUE R$ = " + valorSaque);
+                            System.out.println("Saldo na Conta apos valor do saque R$ = " + saldo);
+                            historico += ("SAQUE: - R$ " + valorSaque + "\n");
+                            System.out.println("");
+                            System.out.println("Voltando ao Menu inicial");
+                            System.out.println("");
+                        }
+                        break;
 
 
-                case 2:
+                    case 3:
+                        System.out.println("AREA PIX");
+                        System.out.println("");
+                        System.out.println("Digite a chave pix (CPF)");
+                        chavePix = scanner.next();
+                        System.out.println("Digite o valor que vai enviar");
+                        valorPix = scanner.nextDouble();
+                        if (valorPix > saldo) {
+                            System.out.println("Voce nao pode enviar um pix maior do que seu saldo, saldo atual R$=" + saldo);
+                            break;
+                        } else {
+                            System.out.printf("Voce enviou um PIX de %.2f para a chave pix %s %n", valorPix, chavePix);
+                            saldo -= valorPix;
+                            historico += ("PIX - R$" + valorPix + "\n");
+                            System.out.printf("Saldo apos enviar o pix é de R$= %.2f %n", saldo);
+                            System.out.println("");
+                            System.out.println("Voltando a tela de menu, aguarde.");
+                        }
+                        break;
+
+                    case 4:
+                        System.out.println("AREA EXTRATO FINANCEIRO");
+                        System.out.println("");
+                        System.out.println("===== HISTORICO =====");
+                        System.out.println(historico);
+                        System.out.printf("Saldo Atual: R$ %.2f%n", saldo);
+
+                        break;
+
+                    case 5:
+                        System.out.println("Obrigado por usar nosso aplicativo");
+                        return;
+                    default:
+                        System.out.println("Opcao invalida");
+                        break;
+                }
 
 
-
-                case 3:
-
-
-                case 4:
-
-
-
-                case 5:
-
-                default:
-                    System.out.println("Opcao invalida");
-                    break;
             }
-
-
-
-
-        }
-    }
-}
+    }}
