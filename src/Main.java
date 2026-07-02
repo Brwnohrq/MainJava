@@ -144,3 +144,70 @@ public class Main {
 
             }
     }}
+
+
+
+
+
+//import java.util.Scanner;
+//public class BancoSV3 {
+//    public static void main(String[] args) {
+//
+//        Scanner scanner = new Scanner(System.in);
+//
+//        double saldo = 100;
+//        double saque = 0;
+//        double enviarPix = 0;
+//
+//        boolean whileMenu = true;
+//        String historico = "";
+//
+//
+//        System.out.println("==================");
+//        System.out.println("MENU INICIAL BANCO");
+//        System.out.println("==================");
+//        System.out.println("");
+//        while (whileMenu) {
+//            System.out.println("Opcao 1 = SAQUE");
+//            System.out.println("Opcao 2 = DEPOSITO");
+//            System.out.println("Opcao 3 = AREA PIX");
+//            System.out.println("Opcao 4 = EXTRATO FINANCEIRO");
+//            System.out.println("Opcao 5 = DESLOGAR");
+//            System.out.println("");
+//            System.out.println("Digite a Opcao Desejada");
+//            int menu = scanner.nextInt();
+//
+//
+//            switch (menu) {
+//
+//                case 1:
+//                    System.out.println("=============");
+//                    System.out.println("AREA DE SAQUE");
+//                    System.out.println("=============");
+//                    System.out.println("");
+//                    boolean rodarMenu = true;
+//                    while (rodarMenu) {
+//                        System.out.println("Digite o valor que deseja ser sacado");
+//                        int valorSaque = scanner.nextInt();
+//                        System.out.println("Voce deseja sacar " + valorSaque);
+//                        System.out.println("Opcao 1 = SIM, confirmar saque");
+//                        System.out.println("Opcao 2 = NAO, digitar outro valor de saque");
+//                        int confirmarSaque = scanner.nextInt();
+//                        switch (confirmarSaque) {
+//
+//                            case 1:
+//                                System.out.println("voce sacou");
+//                                rodarMenu = false;
+//                                break;
+//
+//                            case 2:
+//                                System.out.println("Retornar");
+//                                break;
+//                        }
+//
+//                    }
+//            }
+//        }
+//    }
+//}
+
