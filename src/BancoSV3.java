@@ -207,9 +207,9 @@ public class BancoSV3 {
                         case 2:
                             boolean telefoneW = true;
                                 while (telefoneW) {
-                                    System.out.println("Digite o Telefone de quem vai receber o pix");
+                                    System.out.println(" 📲 Digite o Telefone de quem vai receber o pix");
                                     long telefone = scanner.nextLong();
-                                    System.out.println("Telefone informado " +telefone);
+                                    System.out.println("📲 Telefone informado " +telefone);
                                     System.out.println("Confirmar?");
                                     System.out.println("[1] Sim");
                                     System.out.println("[2] Digitar novamente");
