@@ -1,63 +1,24 @@
-import javax.swing.JOptionPane;
+import entidade.Pessoa;
 
-public class Main {
+public class Main{
     public static void main(String[] args) {
 
-        boolean rodando = true;
 
-        while (rodando) {
+        Pessoa pessoa = new Pessoa();
+        pessoa.nome = "Brwno";
+        pessoa.idade = 28;
+        pessoa.altura = 1.75;
+        pessoa.peso = 88;
 
-            String nome = JOptionPane.showInputDialog("Digite seu nome:");
+        pessoa.dadosPessoa();
 
-            double peso = Double.parseDouble(
-                    JOptionPane.showInputDialog("Digite seu peso:")
-            );
 
-            if (peso <= 0) {
-                JOptionPane.showMessageDialog(null, "Peso inválido");
-                continue;
-            }
+        pessoa.andar();
+        pessoa.correr();
+        pessoa.aniversario();
+        pessoa.comer();
 
-            double altura = Double.parseDouble(
-                    JOptionPane.showInputDialog("Digite sua altura:")
-            );
+        pessoa.dadosPessoa();
 
-            if (altura <= 0) {
-                JOptionPane.showMessageDialog(null, "Altura inválida");
-                continue;
-            }
-
-            double imc = peso / (altura * altura);
-
-            String classificacao;
-
-            if (imc < 18.5) {
-                classificacao = "Abaixo do peso";
-            } else if (imc <= 24.9) {
-                classificacao = "Peso normal";
-            } else if (imc <= 29.9) {
-                classificacao = "Sobrepeso";
-            } else {
-                classificacao = "Obesidade";
-            }
-
-            JOptionPane.showMessageDialog(null,
-                    "Olá, " + nome +
-                            "\nSeu IMC é: " + imc +
-                            "\nClassificação: " + classificacao
-            );
-
-            int opcao = Integer.parseInt(
-                    JOptionPane.showInputDialog(
-                            "Deseja calcular novamente?\n1 - Sim\n2 - Não"
-                    )
-            );
-
-            if (opcao == 2) {
-                rodando = false;
-            }
-        }
-
-        JOptionPane.showMessageDialog(null, "Programa finalizado!");
     }
 }
