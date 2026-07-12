@@ -1,71 +1,62 @@
-import entidade.Carros;
+import entidade.Biblioteca;
+import entidade.Livros;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
 
-        Carros carro = new Carros();
+        int opcao =0;
 
-        carro.marca = "Bmw";
-        carro.modelo = "x1";
-        carro.cor = "Branco";
-        carro.numeroPortas = 4;
-        carro.tamanhoAro = 17;
-        carro.velocidade = 0;
-        int opcaoCarro = 0;
-        Boolean carroLigado = true;
+        Biblioteca biblioteca = new Biblioteca();
+        Livros Livros = new Livros();
 
-        while (carroLigado) {
+        while (opcao !=4){
 
-            System.out.println("[1] Andar");
-            System.out.println("[2] Correr");
-            System.out.println("[3] Freiar");
-            System.out.println("[4] Parar o Carro");
-            System.out.println("[5] Desligar o carro");
+        System.out.println("Biblioteca");
+        System.out.println("[1]: Mostrar Livro");
+        System.out.println("[2]: Emprestar Livro");
+        System.out.println("[3]: Devolver Livro");
+        System.out.println("[4]: Sair do Sistema");
+        opcao = sc.nextInt();
 
-            opcaoCarro = sc.nextInt();
+            switch (opcao){
+                case 1:
+                    System.out.println("Mostrar Livros");
+                    biblioteca.mostrarLivros();
+                    System.out.println("");
 
-            switch (opcaoCarro) {
-                case 1: {
-                    carro.andar();
                     break;
-                }
 
-                case 2: {
-                    carro.correr();
-                }
-                break;
+                case 2:
+                    System.out.println("Emprestar Livro");
+                    biblioteca.emprestar();
 
-                case 3: {
 
-                    carro.frear();
-                }
-                break;
+                    break;
 
-                case 4: {
-                    carro.parar();
-                }
-                break;
+                case 3:
+                    System.out.println("Devolver Livro");
+                    biblioteca.devolver();
 
-                case 5: {
-                        boolean desligou = carro.desligar();
 
-                        if (desligou) {
-                            carroLigado = false;
-                        }
+                    break;
 
-                        break;
-                    }
-
+                case 4:
+                    System.out.println("Sair do Sistema");
+                    System.out.println("Desligando..");
+                    break;
 
                 default:
                     System.out.println("Opcao invalida");
+
+
             }
 
 
 
-        }
+
     }
-}
+}}
