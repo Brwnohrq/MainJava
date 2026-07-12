@@ -1,98 +1,120 @@
 package entidade;
 
 import java.util.Scanner;
-import entidade.Biblioteca;
+
 public class Menu {
-
-    Biblioteca biblioteca = new Biblioteca();
-
-
     Scanner sc = new Scanner(System.in);
+    Locadora locadora = new Locadora();
 
-    boolean rodarMenu = true;
 
+    boolean locadoraRodar = true;
 
-    public void rodarMenu() {
-        while (rodarMenu) {
-            System.out.println("Biblioteca Online GPT");
-            System.out.println("=====================");
-            System.out.println("[1] = MOSTRAR LIVROS");
-            System.out.println("[2] = EMPRESTAR");
-            System.out.println("[3] = DEVOLVER");
-            System.out.println("[4] = SAIR DA BIBLIOTECA");
-            int opcao = sc.nextInt();
+    public void menuRodar(){
+        while (locadoraRodar){
+        System.out.println("Painel de Aluguel Locadora GPT");
+        System.out.println("[1]: Mostrar Veiculos");
+        System.out.println("[2]: Alugar Veiculo");
+        System.out.println("[3]: Devolver Veiculo");
+        System.out.println("[4]: Sair da Locadora");
+        System.out.println("");
+        System.out.println("Digite a Opcao desejada");
 
-            switch (opcao) {
+        int opcao = sc.nextInt();
+            switch (opcao){
 
                 case 1:
-                    biblioteca.mostrarLivros();
+                    System.out.println("Conheça nossos veiculos");
+                        locadora.mostrarCarros();
+
+
                     break;
 
                 case 2:
-                    System.out.println("Livros");
-                    System.out.println("[1] - Harry Potter");
-                    System.out.println("[2] - Senhor dos Aneis");
-                    System.out.println("[3] - O Hobbit");
+                    System.out.println("Qual carro te interessou pra Alugar?");
+                    System.out.println("[1]: Chevrolet Onix ");
+                    System.out.println("[2]: BMW x1 ");
+                    System.out.println("[3]: Mercedes-Benz c180 ");
+                        int alugarCarro = sc.nextInt();
 
-                    int escolher = sc.nextInt();
+                            switch (alugarCarro){
+                                case 1:
+                                    System.out.println("Chevrolet Onix ");
+                                    if (locadora.veiculo1.alugarCarro()){
 
+                                        System.out.println("Por quantos dias vai localo?");
+                                        int diasLocado = sc.nextInt();
+                                        System.out.println("Voce vai localo por " + diasLocado + " dias");
+                                        double valorLocacaoOnix = (diasLocado * locadora.veiculo1.valorDiaria);
+                                        System.out.println("Valor total da Locação fica em" +valorLocacaoOnix);
+                                        System.out.println("");
+                                        break;
 
-                    switch (escolher) {
+                                    } else {
+                                    } break;
 
-                        case 1:
-                            System.out.println("Harry Potter");
-                            biblioteca.HarryPotter.emprestar();
-                            break;
+                                case 2:
+                                    System.out.println("BMW - X1");
+                                    if (locadora.veiculo2.alugarCarro()) {
 
-                        case 2:
-                            System.out.println("Senhor dos Aneis");
-                            biblioteca.SenhorAneis.emprestar();
-                            break;
+                                        System.out.println("Por quantos dias vai localo?");
+                                        int diasLocado = sc.nextInt();
+                                        System.out.println("Voce vai localo por " + diasLocado + " dias");
+                                        double valorLocacaoBmw = (diasLocado * locadora.veiculo2.valorDiaria);
+                                        System.out.println("Valor total da Locação fica em " +valorLocacaoBmw);
+                                        System.out.println("");
+                                        break;
 
-                        case 3:
-                            System.out.println("O Hobbit");
-                            biblioteca.OHobbit.emprestar();
-                            break;
+                                    } else {
+                                        System.out.println("Veiculo indisponivel pra Locação");
+                                    } break;
 
-                        default:
-                            System.out.println("Opcao invalida!");
-                            break;
-                    } break;
+                                case 3:
+                                        System.out.println("Mercedes Benz - c180");
+                                    if (locadora.veiculo3.alugarCarro()) {
+
+                                        System.out.println("Por quantos dias vai localo?");
+                                        int diasLocado = sc.nextInt();
+                                        System.out.println("Voce vai localo por " + diasLocado + " dias");
+                                        double valorLocacaoMercedez = (diasLocado * locadora.veiculo3.valorDiaria);
+                                        System.out.println("Valor total da Locação fica em " +valorLocacaoMercedez);
+                                        System.out.println("");
+
+                                     } else {
+                                        System.out.println("Veiculo indisponivel pra Locação");
+                                    } break;
+                                default:
+                                    System.out.println("Opcao Invalida!");
+                            } break;
 
                 case 3:
-                    System.out.println("Devolvendo Livros");
-                    System.out.println("[1] - Devolver Harry Potter");
-                    System.out.println("[2] - Devolver Senhor dos Aneis");
-                    System.out.println("[3] - Devolver O Hobbit");
+                    System.out.println("Devolver Veiculo");
+                    System.out.println("");
+                    System.out.println("Qual Veiculo vai devolver?");
+                    System.out.println("[1] - Chevrolet Onix");
+                    System.out.println("[2] - BMW X1");
+                    System.out.println("[3] - Mercedes Benz c180");
+                    int devolver = sc.nextInt();
+                        switch (devolver){
 
-                    int escolhaDevolver = sc.nextInt();
-                        switch (escolhaDevolver){
                             case 1:
-                                System.out.println("Devolvendo Harry Potter");
-                                biblioteca.HarryPotter.devolver();
+                                locadora.veiculo1.devolverCarro();
                                 break;
-
                             case 2:
-                                System.out.println("Devolvendo Senhor dos Aneis");
-                                biblioteca.SenhorAneis.devolver();
+                                locadora.veiculo2.devolverCarro();
                                 break;
-
                             case 3:
-                                System.out.println("Devolvendo O Hobbit");
-                                biblioteca.OHobbit.devolver();
+                                locadora.veiculo3.devolverCarro();
                                 break;
-                        }
-                    break;
+                        } break;
 
                 case 4:
-                    System.out.println("Desligando Aplicativo");
-                    rodarMenu = false;
+                    System.out.println("Saindo da Locadora");
+                    locadoraRodar =false;
                     break;
 
+                default:
+                    System.out.println("Opcao invalida");
             }
-
-        }
-
     }
-}
 
+}}
