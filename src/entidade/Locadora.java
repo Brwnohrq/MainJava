@@ -2,45 +2,59 @@ package entidade;
 
 public class Locadora {
 
+    Carro veiculo1 = new Carro();
+    Carro veiculo2 = new Carro();
+    Carro veiculo3 = new Carro();
+    Carro veiculo4 = new Carro();
 
-    Veiculo veiculo1 = new Veiculo();
-    Veiculo veiculo2 = new Veiculo();
-    Veiculo veiculo3 = new Veiculo();
+    public Locadora() {
 
-
-    public Locadora (){
 
         veiculo1.marca = "Chevrolet";
         veiculo1.modelo = "Onix";
-        veiculo1.ano = 2020;
         veiculo1.placa = "ABC-1234";
-        veiculo1.valorDiaria = 120;
+        veiculo1.anoFabricacao = 2020;
+        veiculo1.valorDiaria = 150;
         veiculo1.disponivel = true;
 
-
-        veiculo2.marca = "BMW";
-        veiculo2.modelo = "X1";
-        veiculo2.ano = 2022;
-        veiculo2.placa = "ACK-3412";
-        veiculo2.valorDiaria = 180;
+        veiculo2.marca = "Honda";
+        veiculo2.modelo = "Civic";
+        veiculo2.placa = "GHK-3412";
+        veiculo2.anoFabricacao = 2025;
+        veiculo2.valorDiaria = 224;
         veiculo2.disponivel = true;
 
+
         veiculo3.marca = "Mercedes-Benz";
-        veiculo3.modelo = "c180";
-        veiculo3.ano = 2025;
-        veiculo3.placa = "ACF-4412";
-        veiculo3.valorDiaria = 300;
+        veiculo3.modelo = "GLA-200";
+        veiculo3.placa = "GGI-5412";
+        veiculo3.anoFabricacao = 2022;
+        veiculo3.valorDiaria = 389;
         veiculo3.disponivel = true;
 
+
+        veiculo4.marca = "Volkswagem";
+        veiculo4.modelo = "Nivus";
+        veiculo4.placa = "NVS-1112";
+        veiculo4.anoFabricacao = 2025;
+        veiculo4.valorDiaria = 212;
+        veiculo4.disponivel = true;
     }
+
 
     public void mostrarCarros(){
 
-       veiculo1.mostrarCarro();
-       veiculo2.mostrarCarro();
-       veiculo3.mostrarCarro();
-
+        System.out.println("Veiculos Locadora GPT");
+        veiculo1.mostrarCarros();
+        System.out.println("");
+        veiculo2.mostrarCarros();
+        System.out.println("");
+        veiculo3.mostrarCarros();
+        System.out.println("");
+        veiculo4.mostrarCarros();
+        System.out.println("");
     }
+
 
 
 }
