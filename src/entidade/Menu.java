@@ -1,4 +1,5 @@
 package entidade;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -9,6 +10,417 @@ public class Menu {
     Veiculos veiculoSelecionado = null;
     boolean whileMenu = true;
 
+
+    public Veiculos selecionarVeiculo(int opcao) {
+
+        switch (opcao) {
+
+            case 1:
+                return oficina.carro1;
+
+            case 2:
+                return oficina.carro2;
+
+            case 3:
+                return oficina.carro3;
+
+            case 4:
+                return oficina.moto1;
+
+            case 5:
+                return oficina.moto2;
+
+            case 6:
+                return oficina.moto3;
+
+            default:
+                return null;
+        }
+    }
+
+    public void mostrarMenuVeiculos() {
+
+        System.out.println("\n=======================================");
+        System.out.println("           ESCOLHA O VEÍCULO");
+        System.out.println("=======================================");
+        System.out.println("[1] - Honda Civic");
+        System.out.println("[2] - Honda HR-V");
+        System.out.println("[3] - Ferrari Enzo");
+        System.out.println("[4] - Yamaha XT 660R");
+        System.out.println("[5] - Yamaha Fazer");
+        System.out.println("[6] - Suzuki Suzukinha");
+        System.out.println("[7] - Voltar");
+        System.out.println("=======================================");
+        System.out.print("Escolha um veículo: ");
+    }
+
+
+    public void mostrarDadosVeiculo(Veiculos veiculo) {
+
+        System.out.println("\n=======================================");
+        System.out.println("          DADOS DO VEÍCULO");
+        System.out.println("=======================================");
+        System.out.println("Marca: " + veiculo.getMarca());
+        System.out.println("Modelo: " + veiculo.getModelo());
+        System.out.println("Ano de fabricação: " + veiculo.getAnoFabricacao());
+        System.out.println("Placa: " + veiculo.getPlaca());
+
+        if (veiculo instanceof Carros) {
+
+            Carros carroSelecionado = (Carros) veiculo;
+
+            System.out.println(
+                    "Número de portas: "
+                            + carroSelecionado.getNumeroDePortas()
+            );
+
+        } else if (veiculo instanceof Motos) {
+
+            Motos motoSelecionada = (Motos) veiculo;
+
+            System.out.println(
+                    "Cilindradas: "
+                            + motoSelecionada.getCilindradas()
+            );
+        }
+
+        System.out.println(
+                "Está em manutenção: "
+                        + veiculo.isEmManutencao()
+        );
+
+        System.out.println("=======================================");
+    }
+
+
+    public void consultarVeiculo() {
+
+        mostrarMenuVeiculos();
+
+        int opcaoVeiculo = sc.nextInt();
+
+        if (opcaoVeiculo == 7) {
+            System.out.println("Retornando ao menu principal.");
+            return;
+        }
+
+        veiculoSelecionado = selecionarVeiculo(opcaoVeiculo);
+
+        if (veiculoSelecionado == null) {
+            System.out.println("Opção inválida!");
+            return;
+        }
+
+        mostrarDadosVeiculo(veiculoSelecionado);
+    }
+
+    public void colocarEmManutencao() {
+
+        mostrarMenuVeiculos();
+
+        int opcaoVeiculo = sc.nextInt();
+
+        if (opcaoVeiculo == 7) {
+            System.out.println("Retornando ao menu principal.");
+            return;
+        }
+
+        veiculoSelecionado = selecionarVeiculo(opcaoVeiculo);
+
+        if (veiculoSelecionado == null) {
+            System.out.println("Opção inválida!");
+            return;
+        }
+
+        if (veiculoSelecionado.isEmManutencao()) {
+            System.out.println(
+                    "Esse veículo já está em manutenção."
+            );
+
+            return;
+        }
+
+        System.out.println("\n=======================================");
+        System.out.println("         CONFIRMAR MANUTENÇÃO");
+        System.out.println("=======================================");
+        System.out.println(
+                "Veículo: "
+                        + veiculoSelecionado.getMarca()
+                        + " "
+                        + veiculoSelecionado.getModelo()
+        );
+        System.out.println("[1] - Sim");
+        System.out.println("[2] - Não");
+        System.out.print("Escolha uma opção: ");
+
+        int confirmarManutencao = sc.nextInt();
+
+        if (confirmarManutencao == 1) {
+
+            veiculoSelecionado.emManutencao();
+
+            System.out.println(
+                    "Veículo colocado em manutenção com sucesso!"
+            );
+
+        } else if (confirmarManutencao == 2) {
+
+            System.out.println("Manutenção cancelada.");
+
+        } else {
+
+            System.out.println("Opção inválida.");
+        }
+    }
+
+
+    public void finalizarManutencao() {
+
+        mostrarMenuVeiculos();
+
+        int opcaoVeiculo = sc.nextInt();
+
+        if (opcaoVeiculo == 7) {
+            System.out.println("Retornando ao menu principal.");
+            return;
+        }
+
+        veiculoSelecionado = selecionarVeiculo(opcaoVeiculo);
+
+        if (veiculoSelecionado == null) {
+            System.out.println("Opção inválida!");
+            return;
+        }
+
+        if (!veiculoSelecionado.isEmManutencao()) {
+
+            System.out.println(
+                    "Esse veículo não está em manutenção."
+            );
+
+            return;
+        }
+
+        System.out.println("\n=======================================");
+        System.out.println("       FINALIZAR MANUTENÇÃO");
+        System.out.println("=======================================");
+        System.out.println(
+                "Veículo: "
+                        + veiculoSelecionado.getMarca()
+                        + " "
+                        + veiculoSelecionado.getModelo()
+        );
+        System.out.println("[1] - Sim");
+        System.out.println("[2] - Não");
+        System.out.print("Escolha uma opção: ");
+
+        int confirmarFinalizacao = sc.nextInt();
+
+        if (confirmarFinalizacao == 1) {
+
+            veiculoSelecionado.veiculoFinalizado();
+
+            System.out.println(
+                    "Manutenção finalizada com sucesso!"
+            );
+
+        } else if (confirmarFinalizacao == 2) {
+
+            System.out.println("Finalização cancelada.");
+
+        } else {
+
+            System.out.println("Opção inválida.");
+        }
+    }
+
+    /*
+     * Menu dos serviços realizados no veículo.
+     */
+    public void realizarServicos() {
+
+        mostrarMenuVeiculos();
+
+        int opcaoVeiculo = sc.nextInt();
+
+        if (opcaoVeiculo == 7) {
+            System.out.println("Retornando ao menu principal.");
+            return;
+        }
+
+        veiculoSelecionado = selecionarVeiculo(opcaoVeiculo);
+
+        if (veiculoSelecionado == null) {
+            System.out.println("Opção inválida!");
+            return;
+        }
+
+        if (!veiculoSelecionado.isEmManutencao()) {
+
+            System.out.println(
+                    "O veículo precisa estar em manutenção "
+                            + "para realizar serviços."
+            );
+
+            return;
+        }
+
+        boolean rodarMenuServicos = true;
+
+        while (rodarMenuServicos) {
+
+            System.out.println("\n=======================================");
+            System.out.println("          SERVIÇOS DISPONÍVEIS");
+            System.out.println("=======================================");
+            System.out.println(
+                    "Veículo: "
+                            + veiculoSelecionado.getModelo()
+            );
+            System.out.println("[1] - Trocar óleo");
+            System.out.println("[2] - Trocar pneus");
+            System.out.println("[3] - Fazer revisão completa");
+            System.out.println("[4] - Mostrar valor acumulado");
+            System.out.println("[5] - Voltar");
+            System.out.println("=======================================");
+            System.out.print("Escolha um serviço: ");
+
+            int servicoDisponivel = sc.nextInt();
+
+            switch (servicoDisponivel) {
+
+                case 1:
+
+                    oficina.trocarOleo();
+
+                    System.out.println(
+                            "Troca de óleo realizada com sucesso!"
+                    );
+
+                    break;
+
+                case 2:
+
+                    trocarPneus();
+
+                    break;
+
+                case 3:
+
+                    oficina.fazerRevisao();
+
+                    System.out.println(
+                            "Revisão completa realizada com sucesso!"
+                    );
+
+                    break;
+
+                case 4:
+
+                    System.out.println("\n===== VALOR ACUMULADO =====");
+
+                    oficina.valorTotalServicos();
+
+                    break;
+
+                case 5:
+
+                    System.out.println(
+                            "Retornando ao menu principal."
+                    );
+
+                    rodarMenuServicos = false;
+
+                    break;
+
+                default:
+
+                    System.out.println("Opção inválida!");
+
+                    break;
+            }
+        }
+    }
+
+    /*
+     * Faz a troca de pneus de acordo com o tipo do veículo.
+     */
+    public void trocarPneus() {
+
+        System.out.print("Quantos pneus deseja trocar? ");
+
+        int quantidadePneus = sc.nextInt();
+
+        if (veiculoSelecionado instanceof Carros) {
+
+            if (quantidadePneus >= 1 && quantidadePneus <= 4) {
+
+                oficina.trocarPneus(quantidadePneus);
+
+                System.out.println(
+                        "Troca de pneus realizada com sucesso!"
+                );
+
+            } else {
+
+                System.out.println(
+                        "Um carro pode trocar entre 1 e 4 pneus."
+                );
+            }
+
+        } else if (veiculoSelecionado instanceof Motos) {
+
+            if (quantidadePneus >= 1 && quantidadePneus <= 2) {
+
+                oficina.trocarPneus(quantidadePneus);
+
+                System.out.println(
+                        "Troca de pneus realizada com sucesso!"
+                );
+
+            } else {
+
+                System.out.println(
+                        "Uma moto pode trocar entre 1 e 2 pneus."
+                );
+            }
+        }
+    }
+
+    /*
+     * Mostra o valor total dos serviços.
+     */
+    public void mostrarValorTotal() {
+
+        System.out.println("\n=======================================");
+        System.out.println("       VALOR TOTAL DOS SERVIÇOS");
+        System.out.println("=======================================");
+
+        oficina.valorTotalServicos();
+
+        System.out.println("=======================================");
+    }
+
+    /*
+     * Finaliza o atendimento atual.
+     */
+    public void finalizarAtendimento() {
+
+        System.out.println("\n=======================================");
+        System.out.println("        FINALIZAR ATENDIMENTO");
+        System.out.println("=======================================");
+
+        mostrarValorTotal();
+
+        System.out.println(
+                "Atendimento finalizado com sucesso!"
+        );
+
+        veiculoSelecionado = null;
+    }
+
+    /*
+     * Menu principal.
+     */
     public void rodarMenu() {
 
         while (whileMenu) {
@@ -16,12 +428,12 @@ public class Menu {
             System.out.println("\n=======================================");
             System.out.println("         OFICINA MINATEL AUTO");
             System.out.println("=======================================");
-            System.out.println("[1] - Mostrar Veículos");
-            System.out.println("[2] - Colocar Veículo em Manutenção");
-            System.out.println("[3] - Finalizar Manutenção");
-            System.out.println("[4] - Realizar Serviços");
-            System.out.println("[5] - Valor Total dos Serviços");
-            System.out.println("[6] - Finalizar Atendimento");
+            System.out.println("[1] - Mostrar veículos");
+            System.out.println("[2] - Colocar veículo em manutenção");
+            System.out.println("[3] - Finalizar manutenção");
+            System.out.println("[4] - Realizar serviços");
+            System.out.println("[5] - Valor total dos serviços");
+            System.out.println("[6] - Finalizar atendimento");
             System.out.println("[7] - Sair");
             System.out.println("=======================================");
             System.out.print("Escolha uma opção: ");
@@ -29,509 +441,61 @@ public class Menu {
             int opcao = sc.nextInt();
 
             switch (opcao) {
+
                 case 1:
-                    System.out.println("\n=======================================");
-                    System.out.println("        ESCOLHA O VEÍCULO");
-                    System.out.println("=======================================");
-                    System.out.println("[1] - Honda Civic");
-                    System.out.println("[2] - Honda HR-V");
-                    System.out.println("[3] - Ferrari Enzo");
-                    System.out.println("[4] - Yamaha XT 660R");
-                    System.out.println("[5] - Yamaha Fazer");
-                    System.out.println("[6] - Suzuki Suzukinha");
-                    System.out.println("[7] - Voltar");
-                    System.out.println("=======================================");
-                    System.out.print("Escolha um veículo: ");
 
-                    int mostrarVeiculo = sc.nextInt();
+                    consultarVeiculo();
 
-                    switch (mostrarVeiculo) {
-
-                        case 1:
-                            System.out.println("Honda Civic");
-                            System.out.println(oficina.carro1.getMarca());
-                            System.out.println(oficina.carro1.getModelo());
-                            System.out.println(oficina.carro1.getAnoFabricacao());
-                            System.out.println(oficina.carro1.getPlaca());
-                            System.out.println(oficina.carro1.getNumeroDePortas());
-                            System.out.println(oficina.carro1.isEmManutencao());
-                            break;
-
-                        case 2:
-                            System.out.println("Honda HR-V");
-                            System.out.println(oficina.carro2.getMarca());
-                            System.out.println(oficina.carro2.getModelo());
-                            System.out.println(oficina.carro2.getAnoFabricacao());
-                            System.out.println(oficina.carro2.getPlaca());
-                            System.out.println(oficina.carro2.getNumeroDePortas());
-                            System.out.println(oficina.carro2.isEmManutencao());
-                            break;
-
-                        case 3:
-                            System.out.println("Ferrari Enzo");
-                            System.out.println(oficina.carro3.getMarca());
-                            System.out.println(oficina.carro3.getModelo());
-                            System.out.println(oficina.carro3.getAnoFabricacao());
-                            System.out.println(oficina.carro3.getPlaca());
-                            System.out.println(oficina.carro3.getNumeroDePortas());
-                            System.out.println(oficina.carro3.isEmManutencao());
-                            break;
-
-                        case 4:
-                            System.out.println("Yamaha XT 660R");
-                            System.out.println(oficina.moto1.getMarca());
-                            System.out.println(oficina.moto1.getModelo());
-                            System.out.println(oficina.moto1.getAnoFabricacao());
-                            System.out.println(oficina.moto1.getPlaca());
-                            System.out.println(oficina.moto1.getCilindradas());
-                            break;
-
-
-                        case 5:
-                            System.out.println("Yamaha Fazer");
-                            System.out.println(oficina.moto2.getMarca());
-                            System.out.println(oficina.moto2.getModelo());
-                            System.out.println(oficina.moto2.getAnoFabricacao());
-                            System.out.println(oficina.moto2.getPlaca());
-                            System.out.println(oficina.moto2.getCilindradas());
-                            break;
-
-                        case 6:
-                            System.out.println("Suzuki Suzukinha");
-                            System.out.println(oficina.moto3.getMarca());
-                            System.out.println(oficina.moto3.getModelo());
-                            System.out.println(oficina.moto3.getAnoFabricacao());
-                            System.out.println(oficina.moto3.getPlaca());
-                            System.out.println(oficina.moto3.getCilindradas());
-                            break;
-
-                        case 7:
-                            break;
-
-                        default:
-                            System.out.println("Opcao Invalida!");
-                            break;
-                    }
-
-                case 2:
-                    System.out.println("\n=======================================");
-                    System.out.println("          MENU DE MANUTENÇÃO");
-                    System.out.println("=======================================");
-                    System.out.println("[1] - Honda Civic");
-                    System.out.println("[2] - Honda HR-V");
-                    System.out.println("[3] - Ferrari Enzo");
-                    System.out.println("[4] - Yamaha XT 660R");
-                    System.out.println("[5] - Yamaha Fazer");
-                    System.out.println("[6] - Suzuki Suzukinha");
-                    System.out.println("[7] - Voltar");
-                    System.out.println("=======================================");
-                    System.out.print("Escolha um veículo: ");
-
-                    int escolhaManutencao = sc.nextInt();
-
-                    switch (escolhaManutencao) {
-
-                        case 1:
-                            System.out.println("MANUTENCAO");
-                            System.out.printf("Gostaria de mandar o %s %s para a Manutencao? %n", oficina.carro1.getMarca(), oficina.carro1.getModelo());
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-                            int confirmarManutencao = sc.nextInt();
-                            if (confirmarManutencao == 1) {
-                                oficina.carro1.emManutencao();
-                            } else if (confirmarManutencao == 2) {
-                                System.out.println("Manutenção cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-
-                            break;
-
-
-                        case 2:
-                            System.out.println("MANUTENCAO");
-                            System.out.printf("Gostaria de mandar o %s %s para a Manutencao? %n", oficina.carro2.getMarca(), oficina.carro2.getModelo());
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-                            confirmarManutencao = sc.nextInt();
-                            if (confirmarManutencao == 1) {
-                                oficina.carro2.emManutencao();
-                            } else if (confirmarManutencao == 2) {
-                                System.out.println("Manutenção cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-                            break;
-
-                        case 3:
-                            System.out.println("MANUTENCAO");
-                            System.out.printf("Gostaria de mandar o %s %s para a Manutencao? %n", oficina.carro3.getMarca(), oficina.carro3.getModelo());
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-                            confirmarManutencao = sc.nextInt();
-                            if (confirmarManutencao == 1) {
-                                oficina.carro3.emManutencao();
-                            } else if (confirmarManutencao == 2) {
-                                System.out.println("Manutenção cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-                            break;
-
-                        case 4:
-                            System.out.println("MANUTENCAO");
-                            System.out.printf("Gostaria de mandar a %s %s para a Manutencao ? %n", oficina.moto1.getMarca(), oficina.moto1.getModelo());
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-                            confirmarManutencao = sc.nextInt();
-                            if (confirmarManutencao == 1) {
-                                oficina.moto1.emManutencao();
-                            } else if (confirmarManutencao == 2) {
-                                System.out.println("Manutenção cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-                            break;
-
-                        case 5:
-                            System.out.println("MANUTENCAO");
-                            System.out.printf("Gostaria de mandar a %s %s para a Manutencao ? %n", oficina.moto2.getMarca(), oficina.moto2.getModelo());
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-                            confirmarManutencao = sc.nextInt();
-                            if (confirmarManutencao == 1) {
-                                oficina.moto2.emManutencao();
-                            } else if (confirmarManutencao == 2) {
-                                System.out.println("Manutenção cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-                            break;
-
-                        case 6:
-
-                            System.out.println("MANUTENCAO");
-                            System.out.printf("Gostaria de mandar a %s %s para a Manutencao ? %n", oficina.moto3.getMarca(), oficina.moto3.getModelo());
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-                            confirmarManutencao = sc.nextInt();
-                            if (confirmarManutencao == 1) {
-                                oficina.moto3.emManutencao();
-                            } else if (confirmarManutencao == 2) {
-                                System.out.println("Manutenção cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-                            break;
-
-                        case 7:
-                            System.out.println("RETORNANDO");
-                            break;
-                    }
                     break;
 
+                case 2:
+
+                    colocarEmManutencao();
+
+                    break;
 
                 case 3:
-                    System.out.println("\n=======================================");
-                    System.out.println("      FINALIZAR MANUTENÇÃO");
-                    System.out.println("=======================================");
-                    System.out.println("[1] - Honda Civic");
-                    System.out.println("[2] - Honda HR-V");
-                    System.out.println("[3] - Ferrari Enzo");
-                    System.out.println("[4] - Yamaha XT 660R");
-                    System.out.println("[5] - Yamaha Fazer");
-                    System.out.println("[6] - Suzuki Suzukinha");
-                    System.out.println("[7] - Voltar");
-                    System.out.println("=======================================");
-                    System.out.print("Escolha um veículo: ");
 
-                    int finalizarManutencao = sc.nextInt();
+                    finalizarManutencao();
 
-                    switch (finalizarManutencao) {
-
-                        case 1:
-                            System.out.printf(
-                                    "Gostaria de finalizar a manutenção do %s %s?%n",
-                                    oficina.carro1.getMarca(),
-                                    oficina.carro1.getModelo()
-                            );
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-
-                            int confirmarFinalizacao = sc.nextInt();
-                            if (confirmarFinalizacao == 1) {
-                                oficina.carro1.veiculoFinalizado();
-                            } else if (confirmarFinalizacao == 2) {
-                                System.out.println("Finalizacao cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-
-                            break;
-
-
-                        case 2:
-
-                            System.out.printf(
-                                    "Gostaria de finalizar a manutenção do %s %s?%n",
-                                    oficina.carro1.getMarca(),
-                                    oficina.carro1.getModelo()
-                            );
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-
-                            confirmarFinalizacao = sc.nextInt();
-                            if (confirmarFinalizacao == 1) {
-                                oficina.carro2.veiculoFinalizado();
-                            } else if (confirmarFinalizacao == 2) {
-                                System.out.println("Finalizacao cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-
-                        case 3:
-
-                            System.out.printf(
-                                    "Gostaria de finalizar a manutenção do %s %s?%n",
-                                    oficina.carro3.getMarca(),
-                                    oficina.carro3.getModelo()
-                            );
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-
-                            confirmarFinalizacao = sc.nextInt();
-                            if (confirmarFinalizacao == 1) {
-                                oficina.carro3.veiculoFinalizado();
-                            } else if (confirmarFinalizacao == 2) {
-                                System.out.println("Finalizacao cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-
-                        case 4:
-
-                            System.out.printf(
-                                    "Gostaria de finalizar a manutenção do %s %s?%n",
-                                    oficina.moto1.getMarca(),
-                                    oficina.moto1.getModelo()
-                            );
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-
-                            confirmarFinalizacao = sc.nextInt();
-                            if (confirmarFinalizacao == 1) {
-                                oficina.moto1.veiculoFinalizado();
-                            } else if (confirmarFinalizacao == 2) {
-                                System.out.println("Finalizacao cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-
-                        case 5:
-
-                            System.out.printf(
-                                    "Gostaria de finalizar a manutenção do %s %s?%n",
-                                    oficina.moto2.getMarca(),
-                                    oficina.moto2.getModelo()
-                            );
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-
-                            confirmarFinalizacao = sc.nextInt();
-                            if (confirmarFinalizacao == 1) {
-                                oficina.moto2.veiculoFinalizado();
-                            } else if (confirmarFinalizacao == 2) {
-                                System.out.println("Finalizacao cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-
-                        case 6:
-                            System.out.printf(
-                                    "Gostaria de finalizar a manutenção do %s %s?%n",
-                                    oficina.moto3.getMarca(),
-                                    oficina.moto3.getModelo()
-                            );
-                            System.out.println("[1]: SIM ");
-                            System.out.println("[2]: NAO ");
-
-                            confirmarFinalizacao = sc.nextInt();
-                            if (confirmarFinalizacao == 1) {
-                                oficina.moto3.veiculoFinalizado();
-                            } else if (confirmarFinalizacao == 2) {
-                                System.out.println("Finalizacao cancelada.");
-                            } else {
-                                System.out.println("Opção inválida.");
-                            }
-
-                        case 7:
-                            System.out.println("Retornando!");
-                            break;
-                        default:
-                            System.out.println("Opcao Invalida");
-                            break;
-                    }
-
+                    break;
 
                 case 4:
-                    System.out.println("\n=======================================");
-                    System.out.println("         REALIZAR SERVIÇOS");
-                    System.out.println("=======================================");
-                    System.out.println("[1] - Honda Civic");
-                    System.out.println("[2] - Honda HR-V");
-                    System.out.println("[3] - Ferrari Enzo");
-                    System.out.println("[4] - Yamaha XT 660R");
-                    System.out.println("[5] - Yamaha Fazer");
-                    System.out.println("[6] - Suzuki Suzukinha");
-                    System.out.println("[7] - Voltar");
-                    System.out.println("=======================================");
-                    System.out.print("Escolha um veículo: ");
 
-                    int veiculoSelecionad = sc.nextInt();
+                    realizarServicos();
 
-                    switch (veiculoSelecionad) {
-
-                        case 1:
-                            veiculoSelecionado = oficina.carro1;
-                            break;
-
-                        case 2:
-                            veiculoSelecionado = oficina.carro2;
-                            break;
-
-                        case 3:
-                            veiculoSelecionado = oficina.carro3;
-                            break;
-
-                        case 4:
-                            veiculoSelecionado = oficina.moto1;
-                            break;
-
-                        case 5:
-                            veiculoSelecionado = oficina.moto2;
-                            break;
-
-                        case 6:
-                            veiculoSelecionado = oficina.moto3;
-                            break;
-
-                        case 7:
-                            System.out.println("Voltando");
-                            break;
-
-                        default:
-                            System.out.println("Opcao Invalida!");
-                            break;
-                    }
-
-
-                    System.out.println("\n=======================================");
-                    System.out.println("          SERVIÇOS DISPONÍVEIS");
-                    System.out.println("=======================================");
-                    System.out.println("[1] - Trocar óleo");
-                    System.out.println("[2] - Trocar pneus");
-                    System.out.println("[3] - Fazer revisão completa");
-                    System.out.println("[4] - Mostrar valor acumulado");
-                    System.out.println("[5] - Voltar");
-                    System.out.println("=======================================");
-                    System.out.print("Escolha um serviço: ");
-
-                    int servicoDisponivel = sc.nextInt();
-
-                    switch (servicoDisponivel) {
-                        case 1:
-                            if (!veiculoSelecionado.isEmManutencao()) {
-                                System.out.println("O veículo precisa estar em manutenção.");
-                                break;
-                            }
-
-                            oficina.trocarOleo();
-                            break;
-
-                        case 2:
-
-                            if (!veiculoSelecionado.isEmManutencao()) {
-                                System.out.println("O veículo precisa estar em manutenção.");
-                                break;
-                            }
-
-                            System.out.println("Quantos pneus deseja trocar?");
-                            int trocarPneus = sc.nextInt();
-
-                            if (veiculoSelecionado instanceof Carros) {
-
-                                if (trocarPneus >= 1 && trocarPneus <= 4) {
-                                    oficina.trocarPneus(trocarPneus);
-                                    System.out.println("Troca de pneus feita com sucesso!");
-
-                                } else {
-                                    System.out.println("Um carro só pode trocar entre 1 e 4 pneus.");
-                                }
-
-                            } else if (veiculoSelecionado instanceof Motos) {
-
-                                if (trocarPneus >= 1 && trocarPneus <= 2) {
-                                    oficina.trocarPneus(trocarPneus);
-                                    System.out.println("Troca de pneus feita com sucesso!");
-                                } else {
-                                    System.out.println("Uma moto só pode trocar entre 1 e 2 pneus.");
-                                }
-                            }
-
-                            break;
-
-
-                        case 3:
-
-                            if (!veiculoSelecionado.isEmManutencao()) {
-                                System.out.println("O veículo precisa estar em manutenção.");
-                                break;
-                            }
-
-                            oficina.fazerRevisao();
-                            break;
-
-                        case 4:
-                            System.out.println("TOTAL DOS SERVICOS");
-                            oficina.valorTotalServicos();
-                            break;
-
-                        case 5:
-                            System.out.println("Voltando");
-                            break;
-
-                        default:
-                            System.out.println("Opcao invalida");
-                    }
                     break;
 
                 case 5:
-                    System.out.println("====VALOR TOTAL====");
-                    oficina.valorTotalServicos();
+
+                    mostrarValorTotal();
+
                     break;
 
                 case 6:
-                    System.out.println("=====FINALIZAR MANUTENCAO=====");
-                    if (veiculoSelecionado.emManutencao()) {
-                        veiculoSelecionado.veiculoFinalizado();
-                        break;
-                    } else {
 
-                    }
+                    finalizarAtendimento();
+
                     break;
-
 
                 case 7:
-                    System.out.println("SAINDO");
+
+                    System.out.println(
+                            "Saindo da Oficina Minatel Auto."
+                    );
+
                     whileMenu = false;
+
                     break;
 
+                default:
+
+                    System.out.println("Opção inválida!");
+
+                    break;
             }
-
-
         }
+
+        sc.close();
     }
 }
-
-
-
