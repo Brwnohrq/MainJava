@@ -1,4 +1,4 @@
 package entidade;
 
-public class Menu {
+public class Banco {
 }
