@@ -1,11 +1,8 @@
-import entidade.Menu;
-
 public class Main {
     public static void main(String[] args) {
 
-        Menu menus = new Menu ();
+    Menu menu = new Menu();
 
-
-        menus.rodarMenu();
+    menu.rodarMenu();
     }
 }

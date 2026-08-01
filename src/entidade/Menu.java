@@ -1,4 +1,0 @@
-package entidade;
-
-public class Menu {
-}
