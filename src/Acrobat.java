@@ -1,4 +1,4 @@
-public class Archer extends Character {
+public class Acrobat extends Character {
 
     private String weapon;
     private int arrows;
@@ -6,7 +6,7 @@ public class Archer extends Character {
     private int lifeBow;
     private int specialArrowUse;
 
-    public Archer (String name, double maxHealth, int attack, int defense){
+    public Acrobat(String name, double maxHealth, int attack, int defense){
         super(name,maxHealth,attack,defense);
     this.weapon = "Long Bow";
     this.arrows = 10;

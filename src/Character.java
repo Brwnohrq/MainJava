@@ -75,7 +75,7 @@ public class Character {
 
     public void setAttack(int attack) {
 
-        if (attack <= 0 || attack > 500) {
+        if (attack <= 0 || attack > 501) {
             attack = 50;
         }
 

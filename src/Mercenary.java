@@ -1,96 +1,151 @@
+public class Mercenary extends Character{
 
-public class Warrior extends Character {
 
-    private int rage;
     private String weapon;
-    private int lifeWeapon;
-    private int startAttack;
+    private String weaponType;
+    private int fp;
+    private int maxFP;
+    private int adoch;
+    private int baseAttack;
+    private int masteryCount;
 
-    public Warrior(String name, double maxHealth, int attack, int defense, int rage, String weapon){
+    public Mercenary(
+            String name,
+            double maxHealth,
+            int attack,
+            int defense,
+            int maxFP,
+            int adoch,
+            String weapon,
+            String weaponType) {
+
         super(name, maxHealth, attack, defense);
 
-        this.rage = rage;
         this.weapon = weapon;
-        this.lifeWeapon = 100;
-        this.startAttack = getAttack();
+        this.weaponType = weaponType;
+
+        if (maxFP < 1 || maxFP > 300) {
+            this.maxFP = 100;
+        } else {
+            this.maxFP = maxFP;
+        }
+
+        this.fp = this.maxFP;
+
+        if (adoch < 1 || adoch > 300) {
+            this.adoch = 1;
+        } else {
+            this.adoch = adoch;
+        }
+
+        this.baseAttack = getAttack();
+        this.masteryCount = 0;
     }
 
-    public int getStartAttack() {
-        return startAttack;
+    public boolean slash() {
+        if (!isAlive()) {
+            return false;
+        }
+        if (fp <=19){
+            return false;
+        }
+        fp -=20;
+        return true;
+    }
+
+    public boolean bloodyStrike(){
+        if (!isAlive()){
+            return false;
+        }
+        if (fp <= 39) {
+            return false;
+        }
+        fp -=40;
+        return true;
+    }
+
+    public boolean weaponMastery(){
+        if (masteryCount >=3){
+            return false;
+        }
+        if (!isAlive()){
+            return false;
+        }
+        if (fp <=19){
+            return false;
+        }
+        if (getAttack() >=400){
+            return false;
+        }
+
+
+        int attack = getAttack();
+
+        attack +=100;
+        setAttack(attack);
+        masteryCount ++;
+        fp -=20;
+        return true;
     }
 
     public String getWeapon() {
         return weapon;
     }
 
-    public int getRage() {
-        return rage;
+    public int getMasteryCount() {
+        return masteryCount;
     }
 
-    public void setRage(int rage) {
-        this.rage = rage;
+    public int getBaseAttack() {
+        return baseAttack;
+    }
+
+    public int getFp() {
+        return fp;
+    }
+
+    public int getAdoch() {
+        return adoch;
+    }
+
+    public int getMaxFP() {
+        return maxFP;
+    }
+
+    public String getWeaponType() {
+        return weaponType;
     }
 
     public void setWeapon(String weapon) {
         this.weapon = weapon;
     }
 
+    public void setWeaponType(String weaponType) {
+        this.weaponType = weaponType;
+    }
 
-    public boolean heavyAttack(){
-        if (rage >= 100){
-            rage -= 100;
-            return true;
+    public void setAdoch(int adoch) {
+        if (adoch <=-1 || adoch >=301){
+            return;
         }
-        return false;
+        this.adoch = adoch;
     }
 
-
-    @Override
-    public void showStatus(){
-    super.showStatus();
-
-        System.out.println("Rage: " +rage);
-        System.out.println("Weapon " + weapon);
-    }
-
-
-    public boolean fury(){
-        if (rage >=100) {
-            return false;
-
-        }else {
-            double healthWarrior = getHealth();
-            if (healthWarrior <= 25) {
-                return false;
-
-            } else {
-                rage =100;
-                healthWarrior = healthWarrior - 25;
-                setHealth(healthWarrior);
-                lifeWeapon -=10;
-                return true;
-                }
-
-    }
-}
-
-    public void setLifeWeapon(int lifeWeapon) {
-        this.lifeWeapon = lifeWeapon;
-    }
-
-    public  boolean brokenWeapon (){
-        if (lifeWeapon >=1){
-            return false;
+    public void setMaxFP(int maxFP) {
+        if (maxFP <= -1 || maxFP >=300){
+            return;
         }
-        else {
-            if (lifeWeapon ==0){
-                setAttack(1);
-            }
-            return true;
+        this.maxFP = maxFP;
+    }
 
+    public void setFp(int fp) {
+        if (fp <=-1 || fp > maxFP) {
+            return;
         }
+        this.fp = fp;
     }
 
 
 }
+
 

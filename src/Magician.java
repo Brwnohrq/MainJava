@@ -4,14 +4,20 @@ public class Magician extends Character{
     private String weapon;
     private int spellUse;
     private int baseAttack;
+    private int fireUses;
 
     public Magician(String name, double maxHealth, int attack, int defense, int magicianPoint, String weapon){
         super(name, maxHealth, attack, defense);
 
         this.magicianPoint = magicianPoint;
         this.weapon = weapon;
-        this.spellUse = spellUse;
+        this.spellUse = 0;
         this.baseAttack = getAttack();
+        this.fireUses = 0;
+    }
+
+    public int getFireUses() {
+        return fireUses;
     }
 
     public int getSpellUse() {
@@ -72,6 +78,24 @@ public class Magician extends Character{
         } return true;
     }
 
+    public boolean fireBall(){
+        if (fireUses >=3){
+            return false;
+        }
+        if (!isAlive()){
+            return false;
+        }
+        if (magicianPoint <15){
+            return false;
+        }
+
+        magicianPoint -=15;
+        int mageAttack = getAttack();
+        mageAttack += 50;
+        setAttack(mageAttack);
+        fireUses ++;
+        return true;
+    }
 
 
 }
