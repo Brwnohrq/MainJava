@@ -1,196 +1,187 @@
-
 import java.util.Scanner;
 
 public class Tabuleiro {
 
-    String [][] tabuleiro = new String[3][3];
+    String[][] tabuleiro = new String[3][3];
 
-    Scanner scanner = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
-    private boolean jogadorDoX = true;
-    private boolean whileTabuleiro = true;
-    private int numeroJogadas = 0;
+    private boolean rodarTabuleiroW = true;
+    private boolean jogadorX = true;
+    private int contadorJogos = 0;
 
+    public void mostrarTabuleiro() {
 
-    public void iniciarTabuleiro(){
-        for (int i = 0 ; i < tabuleiro.length ; i++){
+        for (int i = 0; i < tabuleiro.length; i++) {
+            for (int j = 0; j < tabuleiro.length; j++) {
 
-
-            for (int j = 0 ; j < tabuleiro.length ; j++){
-                if (tabuleiro [i][j] ==null){
-                    tabuleiro [i][j] = "-";
+                if (tabuleiro[i][j] == null) {
+                    tabuleiro[i][j] = "-";
                 }
-
                 System.out.print(tabuleiro[i][j]);
             }
-
-            System.out.println(" ");
+            System.out.println();
         }
-
     }
 
-    public void rodarTabuleiro(){
 
-        iniciarTabuleiro();
+    public void iniciarJogo() {
+        System.out.println("O Jogador X COMEÇA");
+        while (rodarTabuleiroW) {
+            mostrarTabuleiro();
+            System.out.println("Digite a Linha que quer Jogar");
+            int linha = sc.nextInt();
+            System.out.println("Digite a Coluna que quer Jogar");
+            int coluna = sc.nextInt();
 
-        while (whileTabuleiro){
-
-
-        System.out.println("Qual Linha quer Jogar?");
-        int linha = scanner.nextInt();
-        if (linha >=3 || linha < 0){
-            continue;
-        }
-        System.out.println("de Qual Coluna?");
-        int coluna = scanner.nextInt();
-            if (coluna >=3 || coluna <0){
+            if (linha >= 3 || linha < 0) {
+                continue;
+            }
+            if (coluna >= 3 || coluna < 0) {
                 continue;
             }
 
-
-
-       if (tabuleiro [linha][coluna].equals("X") || tabuleiro [linha][coluna].equals("O")){
-           System.out.println("Ja tem um Jogo na Linha " + linha + " Coluna " + coluna);
-           continue;
-       }
-
-            if (jogadorDoX) {
+            if (jogadorX) {
+                if (tabuleiro[linha][coluna].equals("X") || tabuleiro[linha][coluna].equals("O")) {
+                    continue;
+                }
 
                 tabuleiro[linha][coluna] = "X";
-                numeroJogadas++;
-
-                if (vitoriaX()) {
-                    iniciarTabuleiro();
+                contadorJogos++;
+                if (xGanhou()){
                     break;
                 }
-
-                empatar();
-
-                if (whileTabuleiro) {
+                empate();
+                jogadorX = false;
+                if (rodarTabuleiroW){
                     System.out.println("Vez do Jogador O");
-                    jogadorDoX = false;
                 }
 
-            } else {
+
+            } else if (jogadorX == false) {
+                if (tabuleiro[linha][coluna].equals("X") || tabuleiro[linha][coluna].equals("O")) {
+                    System.out.println("Linha " + linha + " e Coluna " + coluna + " Nao estao disponiveis");
+                    continue;
+                }
 
                 tabuleiro[linha][coluna] = "O";
-                numeroJogadas++;
-
-                if (ganharO()) {
-                    iniciarTabuleiro();
-                    break;
-                }
-
-                empatar();
-
-                if (whileTabuleiro) {
+                contadorJogos++;
+                oGanhou();
+                empate();
+                jogadorX = true;
+                if (rodarTabuleiroW){
                     System.out.println("Vez do Jogador X");
-                    jogadorDoX = true;
                 }
+
             }
 
 
-
-        for (int i = 0 ; i < tabuleiro.length ; i++){
-
-
-            for (int j = 0 ; j < tabuleiro.length ; j++){
-
-                System.out.print(tabuleiro[i][j]);
-            }
-
-            System.out.println(" ");
         }
 
-
-
-
     }
+
+    public void empate() {
+        if (contadorJogos == 9) {
+            System.out.println("JOGO EMPATADO");
+            mostrarTabuleiro();
+            rodarTabuleiroW = false;
+        }
     }
 
 
-    public boolean vitoriaX(){
-        for (int i = 0; i < tabuleiro.length ; i++){
+    public boolean xGanhou() {
+        for (int i = 0; i < tabuleiro.length; i++) {
 
-            if (tabuleiro [i][0].equals("X")
-                &&tabuleiro[i][1].equals("X")
-                    &&tabuleiro[i][2].equals("X")){
+            if (tabuleiro[i][0].equals("X")
+                    && tabuleiro[i][1].equals("X")
+                    && tabuleiro[i][2].equals("X")) {
+                System.out.println("X Ganhou");
+                rodarTabuleiroW = false;
+                mostrarTabuleiro();
+                return true;
+            }
 
+            if (tabuleiro[0][i].equals("X")
+                    && tabuleiro[1][i].equals("X")
+                    && tabuleiro[2][i].equals("X")) {
                 System.out.println("X Ganhou");
-                whileTabuleiro = false;
+                rodarTabuleiroW = false;
+                mostrarTabuleiro();
                 return true;
             }
-            if (tabuleiro [0][i].equals("X")
-                    &&tabuleiro[1][i].equals("X")
-                    &&tabuleiro[2][i].equals("X")){
-                System.out.println("X Ganhou");
-                whileTabuleiro = false;
-                return true;
-            }
-        }
-            if (tabuleiro [0][0].equals("X")
-                    &&tabuleiro[1][1].equals("X")
-                    &&tabuleiro[2][2].equals("X")){
-                System.out.println("X Ganhou");
-                whileTabuleiro = false;
-                return true;
-            }
-            if (tabuleiro [0][2].equals("X")
-                    &&tabuleiro[1][1].equals("X")
-                    &&tabuleiro[2][0].equals("X")){
-                System.out.println("X Ganhou");
-                whileTabuleiro = false;
-                return true;
-            }
-            return false;
 
         }
+            if (tabuleiro[0][0].equals("X")
+                    && tabuleiro[1][1].equals("X")
+                    && tabuleiro[2][2].equals("X")) {
+                System.out.println("X Ganhou");
+                rodarTabuleiroW = false;
+                mostrarTabuleiro();
+                return true;
+            }
 
-        public boolean ganharO(){
+            if (tabuleiro[0][2].equals("X")
+                    && tabuleiro[1][1].equals("X")
+                    && tabuleiro[2][0].equals("X")) {
+                System.out.println("X Ganhou");
+                rodarTabuleiroW = false;
+                mostrarTabuleiro();
+                return true;
+            }
 
-        for (int i = 0 ; i < tabuleiro.length ; i++) {
+
+
+        return false;
+
+    }
+
+
+    public boolean oGanhou() {
+        for (int i = 0; i < tabuleiro.length; i++) {
+
             if (tabuleiro[i][0].equals("O")
                     && tabuleiro[i][1].equals("O")
                     && tabuleiro[i][2].equals("O")) {
                 System.out.println("O Ganhou");
-                whileTabuleiro = false;
+                rodarTabuleiroW = false;
+                mostrarTabuleiro();
                 return true;
             }
+
             if (tabuleiro[0][i].equals("O")
                     && tabuleiro[1][i].equals("O")
                     && tabuleiro[2][i].equals("O")) {
                 System.out.println("O Ganhou");
-                whileTabuleiro = false;
+                rodarTabuleiroW = false;
+                mostrarTabuleiro();
                 return true;
             }
-            }
-            if (tabuleiro[0][0].equals("O")
-                    && tabuleiro [1][1].equals("O")
-                    && tabuleiro [2][2].equals("O")){
-                System.out.println("O Ganhou");
-                whileTabuleiro = false;
-                return true;
-            }
-            if (tabuleiro[0][2].equals("O")
-                    && tabuleiro[1][1].equals("O")
-                    && tabuleiro[2][0].equals("O")){
-                System.out.println("O Ganhou");
-                whileTabuleiro = false;
-                return true;
-            }
-            return false;
 
         }
-        public void empatar (){
-        if (numeroJogadas ==9){
-            System.out.println("Jogo Empatado");
-            whileTabuleiro = false;
-        }
+        if (tabuleiro[0][0].equals("O")
+                && tabuleiro[1][1].equals("O")
+                && tabuleiro[2][2].equals("O")) {
+            System.out.println("O Ganhou");
+            mostrarTabuleiro();
+            rodarTabuleiroW = false;
+            return true;
         }
 
+        if (tabuleiro[0][2].equals("O")
+                && tabuleiro[1][1].equals("O")
+                && tabuleiro[2][0].equals("O")) {
+            System.out.println("O Ganhou");
+            mostrarTabuleiro();
+            rodarTabuleiroW = false;
+            return true;
+        }
+
+
+
+        return false;
 
     }
-
+}
 
 
 
