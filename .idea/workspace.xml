@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7baa5315-05d6-44e2-8cbe-1cb414070d77" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CaixaEletronico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CaixaEletronico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mercado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mercado.java" afterDir="false" />
     </list>
@@ -15,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="15" />
+    <option name="cachedIndexableFilesCount" value="11" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -33,61 +34,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000000000141" />
-      <entry key="MS500" value="1.002690332190126" />
-      <entry key="S2" value="1.2322155678798583" />
-      <entry key="S5" value="1.7380259282765533" />
-      <entry key="S10" value="2.6104111775484444" />
-      <entry key="S30" value="7.546227153730592" />
-      <entry key="S60" value="15.316723922944341" />
-      <entry key="M2" value="27.01935169239826" />
-      <entry key="M5" value="48.10738037346026" />
-      <entry key="M10" value="72.08237427747886" />
-      <entry key="M15" value="88.28922906650241" />
-      <entry key="M30" value="113.48628449601914" />
-      <entry key="H1" value="131.27934211514602" />
-      <entry key="H2" value="141.96227622104664" />
-      <entry key="H4" value="151.1184766691846" />
-      <entry key="D1" value="643.9162212314557" />
-      <entry key="W1" value="3691.7980055431112" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000003821122911" />
+      <entry key="S5" value="1.0027094577614213" />
+      <entry key="S10" value="1.0526515988639789" />
+      <entry key="S30" value="1.7629742367876564" />
+      <entry key="S60" value="3.59765310462041" />
+      <entry key="M2" value="6.825476246129192" />
+      <entry key="M5" value="17.19460158388768" />
+      <entry key="M10" value="35.10041176829631" />
+      <entry key="M15" value="51.29349239913412" />
+      <entry key="M30" value="94.43101367958553" />
+      <entry key="H1" value="159.62114457700415" />
+      <entry key="H2" value="230.1912663935218" />
+      <entry key="H4" value="308.2571040028285" />
+      <entry key="D1" value="943.4442968260571" />
+      <entry key="W1" value="4111.264710795546" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.01606427855064702" />
-      <entry key="MS500" value="0.44397739457231433" />
-      <entry key="S2" value="1.2086175282482268" />
-      <entry key="S5" value="2.25612164496859" />
-      <entry key="S10" value="3.682669745122" />
-      <entry key="S30" value="9.001824608969567" />
-      <entry key="S60" value="15.376245239105303" />
-      <entry key="M2" value="24.631713872182452" />
-      <entry key="M5" value="40.7209327710199" />
-      <entry key="M10" value="56.49285410167983" />
-      <entry key="M15" value="66.63504947887482" />
-      <entry key="M30" value="82.17478024588351" />
-      <entry key="H1" value="93.0874328850246" />
-      <entry key="H2" value="99.62603549330245" />
-      <entry key="H4" value="105.1270106442931" />
-      <entry key="D1" value="432.37982656982336" />
-      <entry key="W1" value="2306.2979597112326" />
+      <entry key="MS100" value="3.958264585083101E-127" />
+      <entry key="MS500" value="5.242047647479157E-26" />
+      <entry key="S2" value="4.785029481691171E-7" />
+      <entry key="S5" value="0.0030062374122438564" />
+      <entry key="S10" value="0.06240260894030763" />
+      <entry key="S30" value="0.8868348160869247" />
+      <entry key="S60" value="2.4263020125584323" />
+      <entry key="M2" value="4.888335439727595" />
+      <entry key="M5" value="12.89676167964155" />
+      <entry key="M10" value="25.741973339290922" />
+      <entry key="M15" value="36.83272077041388" />
+      <entry key="M30" value="67.00603289370957" />
+      <entry key="H1" value="113.65276025377673" />
+      <entry key="H2" value="163.74994031889415" />
+      <entry key="H4" value="214.76864356114322" />
+      <entry key="D1" value="602.9579672533129" />
+      <entry key="W1" value="2546.563628742052" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.046189701958867437" />
-      <entry key="MS500" value="0.7563379559057924" />
-      <entry key="S2" value="2.0441574228103123" />
-      <entry key="S5" value="3.7016949061925235" />
-      <entry key="S10" value="6.053396702815622" />
-      <entry key="S30" value="16.32049791010342" />
-      <entry key="S60" value="30.469971054660046" />
-      <entry key="M2" value="51.457494495027326" />
-      <entry key="M5" value="88.69677612141992" />
-      <entry key="M10" value="128.48439150008082" />
-      <entry key="M15" value="154.85331487136435" />
-      <entry key="M30" value="195.61775573317425" />
-      <entry key="H1" value="224.34240555263455" />
-      <entry key="H2" value="241.57531805688967" />
-      <entry key="H4" value="256.2386309111584" />
-      <entry key="D1" value="1076.2907862885197" />
-      <entry key="W1" value="5998.091822645011" />
+      <entry key="MS100" value="3.8896503519264594E-5" />
+      <entry key="MS500" value="0.1312145854528834" />
+      <entry key="S2" value="0.6018607004955296" />
+      <entry key="S5" value="0.8212379614373848" />
+      <entry key="S10" value="1.0114333024725637" />
+      <entry key="S30" value="2.58904398936856" />
+      <entry key="S60" value="5.9716493066880885" />
+      <entry key="M2" value="11.66977561022997" />
+      <entry key="M5" value="30.048447349562366" />
+      <entry key="M10" value="60.79951859121959" />
+      <entry key="M15" value="88.084796109049" />
+      <entry key="M30" value="161.39877816841664" />
+      <entry key="H1" value="273.2416108886321" />
+      <entry key="H2" value="393.9181373806076" />
+      <entry key="H4" value="523.0105338430495" />
+      <entry key="D1" value="1546.3947083426704" />
+      <entry key="W1" value="6657.823731930203" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -102,33 +103,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Campainha.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.Market.executor": "Debug",
-    "Application.Tabuleiro.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/Users/bruno/Desktop/MainJava/Main/src/Main.java",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Campainha.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Market.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Tabuleiro.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/bruno/Desktop/MainJava/Main/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
