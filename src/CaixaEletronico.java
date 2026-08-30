@@ -1,98 +1,107 @@
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Locale;
 
 public class CaixaEletronico {
-
-    ArrayList<String>  carrinho = new ArrayList<>();
-
     Mercado mercado = new Mercado();
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+    ArrayList <String> carrinho = new ArrayList <String>();
 
-    boolean whileR = true;
 
-    public void rodarMenu(){
-        while (whileR){
+    boolean rodarWhile = true;
 
-            System.out.println("[1]: Mostrar Produtos");
-            System.out.println("[2]: Buscar Produtos");
-            System.out.println("[3]: Ver Carrinho");
-            System.out.println("[4]: Finalizar Carrinho");
-            System.out.println("[5]: Cadastrar Produtos");
-            System.out.println("[6]: Sair do Mercadinho");
+    public boolean rodarMenu() {
 
-            int opcaoMenu = sc.nextInt();
+        while (rodarWhile) {
 
-            switch (opcaoMenu){
+            System.out.println("1 - Cadastrar produto");
+            System.out.println("2 - Consultar produtos por nome");
+            System.out.println("3 - Mostrar todos os produtos");
+            System.out.println("4 - Apagar Produto");
+            System.out.println("5 - Alterar Produto");
+            System.out.println("6 - Sair do menu");
+            int escolherMenu = sc.nextInt();
+
+            switch (escolherMenu){
 
                 case 1:
-                    System.out.println("Mostrar Produtos");
-                    mercado.mostrarProduto();
+                    System.out.println("Menu Cadastro de Produto");
+
+                    System.out.println("Digite o Nome do Produto");
+                    String nomeP = sc.next();
+
+                    System.out.println("Digite o Preco do Produto");
+                    double precoP = sc.nextDouble();
+
+                    System.out.println("Digite a quantidade em Estoque");
+                    int quantidadeP = sc.nextInt();
+
+                    mercado.cadastrarProduto(nomeP,quantidadeP,precoP);
                     break;
 
                 case 2:
-                    boolean produtoSelecionado;
-                    System.out.println("Buscar Produto");
-                    System.out.println("Qual produto quer buscar?");
-                    sc.nextLine();
-                    String nomeBuscar = sc.nextLine();
-                    produtoSelecionado = mercado.buscarProduto(nomeBuscar);
+                    System.out.println("Buscar Produto por Nome");
+                    System.out.println("Digite o nome do Produto");
+                    String nomeBuscar = sc.next();
+                    boolean buscandoProduto = mercado.buscarProduto(nomeBuscar);
 
-                    if (!produtoSelecionado){
-                        continue;
+                    if (!buscandoProduto){
 
+                        System.out.println("Produto Inexistente");
+                        break;
                     }
 
-                    System.out.println("[1]: Adicionar Ao carrinho");
-                    System.out.println("[2]: Voltar Ao Menu");
-                    int carrinhoMenu = sc.nextInt();
-                    switch (carrinhoMenu){
+                    System.out.println("Adicionar o Produto " + nomeBuscar + " Ao carrinho?");
+                    System.out.println("[1]: Sim.");
+                    System.out.println("[2]: Nao.");
+                    int carrinhoAdd = sc.nextInt();
 
-                        case 1:
+
+
+                   switch (carrinhoAdd){
+                       case 1:
                            carrinho.add(nomeBuscar);
-                            System.out.println("Produto adicionado ao carrinho");
-                            continue;
+                           System.out.println("Adicionado ao Carrinho");
+                           System.out.println(carrinho);
+                           break;
 
-                        case 2:
-                            System.out.println("Voltando ao Menus");
-                            break;
-                }
-                    break;
+                       case 2:
+                           continue;
+                   }
+                   break;
 
 
                 case 3:
-                    System.out.println("Ver Carrinho de Produtos");
-                    for (String produto : carrinho)
-                        System.out.println(produto);
+                    System.out.println("MOSTRAR TODO O ESTOQUE");
+                    mercado.mostrarProduto();
                     break;
 
+
                 case 4:
-                    System.out.println("Finalizando Carrinho");
-                    if (carrinho.isEmpty()){
-                        System.out.println("Seu carrinho estava vazio");
-                        break;
-                    }
-                    System.out.println("Seu carrinho esta com");
-                    for (String produto : carrinho)
-                        System.out.println(produto);
-                    System.out.println("Carrinho Finalizado");
-                    carrinho.clear();
+                    System.out.println("APAGAR PRODUTO");
+                    System.out.println("Qual o nome do Produto?");
+                    String nomeAp = sc.next();
+                    System.out.println("Qual o Preco desse Produto?");
+                    double precoAp = sc.nextDouble();
+                    System.out.println("E quantas Unidades ele tem pra apagar?");
+                    int unidadeAp = sc.nextInt();
+
+                    mercado.apagarProduto(nomeAp,precoAp,unidadeAp);
                     break;
 
                 case 5:
-                    System.out.println("CADASTRAR PRODUTO");
-                    System.out.println("Qual o Nome do Produto?");
-                    String nome = sc.nextLine();
-                    System.out.println("Qual a Quantidade em estoque?");
-                    int quantidade = sc.nextInt();
-                    System.out.println("Qual o preco de venda?");
-                    double preco = sc.nextDouble();
+                    System.out.println("Alterar Preco do Produto");
+                    System.out.println("Qual o Novo Preco do Produto?");
+                    double precoNovo = sc.nextDouble();
+                    System.out.println("Como esse Produto chama?");
+                    String nomeProdutoAlterado = sc.next();
 
-                    mercado.cadastrarProduto(nome,quantidade,preco);
+                    mercado.alterarPrecoProduto(precoNovo,nomeProdutoAlterado);
                     break;
 
                 case 6:
-                    System.out.println("SAINDO DO MERCADO");
-                    whileR = false;
+                    System.out.println("SAINDO DO APLICATIVO");
+                    rodarWhile = false;
                     break;
 
                 default:
@@ -100,7 +109,9 @@ public class CaixaEletronico {
                     break;
             }
 
-        }
+
+        } return false;
+
     }
 
 }

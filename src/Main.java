@@ -1,8 +1,9 @@
 public class Main {
     public static void main(String[] args) {
 
-        CaixaEletronico caixaE = new CaixaEletronico();
+        Mercado mercado = new Mercado();
+        CaixaEletronico cx = new CaixaEletronico();
 
-        caixaE.rodarMenu();
+        cx.rodarMenu();
     }
 }
