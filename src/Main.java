@@ -2,11 +2,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Banco bd = new Banco();
-        Conta cc = new Conta();
+        CaixaEletronico cx = new CaixaEletronico();
 
-        bd.depositar(1,100);
 
+        cx.rodarCaixa();
 
     }
 }

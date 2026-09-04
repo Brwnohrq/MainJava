@@ -108,26 +108,73 @@ public class Banco {
         return false;
     }
 
-    public boolean depositar(int idCliente, double valor) {
-        if (!conectar()) {
+    public boolean depositar (int idCliente, double valor){
+        if (!conectar()){
             return false;
         }
-        if (valor <= 0) {
+        if (valor <=0){
             return false;
         }
         try {
-            var comando = connection.prepareStatement("UPDATE Conta SET SALDO = SALDO + ? WHERE ID = ?");
-            comando.setDouble(1,valor);
-            comando.setInt(2,idCliente);
-            int linhasAfetadas = comando.executeUpdate();
+
+        var comando = connection.prepareStatement("UPDATE Conta SET SALDO = SALDO + ? WHERE ID = ? ");
+        comando.setDouble(1,valor);
+        comando.setInt(2,idCliente);
+        int linhasAfetadas = comando.executeUpdate();
 
 
-            if (linhasAfetadas >1) {
-                System.out.println("Deposito Concluido");
-                System.out.println("Saldo Atual" + saldo);
+        if (linhasAfetadas >0) {
+            var resultado = connection.prepareStatement("SELECT SALDO FROM CONTA WHERE ID = ?");
+            resultado.setInt(1, idCliente);
+            var resultadoRetorno = resultado.executeQuery();
+            if (resultadoRetorno.next()) {
+                double saldoR = resultadoRetorno.getDouble("SALDO");
+                System.out.println("Deposito Concluido, no valor de R$: " + valor + " Saldo R$:" + saldoR);
+            }
+            return true;
+        }
+    } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 
+    public double buscarSaldo (int idCliente){
+        if (!conectar()){
+            return -1;
+        }
+        try {
+            var comando = connection.prepareStatement("SELECT SALDO FROM CONTA WHERE ID = ?");
+            comando.setInt(1, idCliente);
+            var resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                double saldoR = resultado.getDouble("SALDO");
+                System.out.println(saldoR);
+                return saldoR;
             }
         } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return -1;
+    }
+
+    public boolean saque (int idCliente, double valor){
+        if (valor <= 0 || valor > buscarSaldo(idCliente)){
+            return false;
+        }
+        try {
+        var comando = connection.prepareStatement("UPDATE CONTA SET SALDO = SALDO - ? WHERE ID = ? ");
+        comando.setDouble(1,valor);
+        comando.setInt(2,idCliente);
+        int linhasAfetadas = comando.executeUpdate();
+
+        if (linhasAfetadas >0) {
+            System.out.println("Saque efetuado com Sucesso");
+            System.out.println("Saldo Atual R$:" + buscarSaldo(idCliente));
+            return true;
+        }
+    } catch (SQLException e){
             System.out.println(e.getMessage());
         }
         return false;
