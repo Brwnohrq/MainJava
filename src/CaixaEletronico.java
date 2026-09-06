@@ -26,7 +26,8 @@ public class CaixaEletronico {
                     System.out.println(" [1] 💰 Consultar Saldo");
                     System.out.println("Digite o ID da sua Conta Bancaria?");
                     int iD = sc.nextInt();
-                    bancoCaixa.buscarSaldo(iD);
+                    double saldoB = bancoCaixa.buscarSaldo(iD);
+                    System.out.println(saldoB);
                     break;
 
                 case 2:
@@ -35,7 +36,14 @@ public class CaixaEletronico {
                     int idDeposito = sc.nextInt();
                     System.out.println("Digite o Valor a ser Depositado");
                     double depositoB = sc.nextDouble();
-                    bancoCaixa.depositar(idDeposito,depositoB);
+                    boolean depositoFeito = bancoCaixa.depositar(idDeposito,depositoB);
+
+                    if (!depositoFeito){
+                        break;
+                    }
+
+                    System.out.println("Deposito Concluido, no valor de R$: " + depositoB + " Saldo R$:" + bancoCaixa.buscarSaldo(idDeposito));
+
                     break;
 
                 case 3:
@@ -44,8 +52,15 @@ public class CaixaEletronico {
                     int idSaque = sc.nextInt();
                     System.out.println("Digite o valor a ser Sacado");
                     double saqueB = sc.nextDouble();
-                    bancoCaixa.saque(idSaque,saqueB);
+                    boolean saqueFeito = bancoCaixa.saque(idSaque,saqueB);
+                if (!saqueFeito){
                     break;
+                }
+                    System.out.println("Saque efetuado com Sucesso");
+                    System.out.println("Saldo Atual RS:" +bancoCaixa.buscarSaldo(idSaque));
+                    break;
+
+
 
                 case 4:
                     System.out.println(" [4] 🚪 Sair");

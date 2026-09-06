@@ -6,7 +6,7 @@ public class Banco {
 
     private String url = "jdbc:mysql://localhost:3306/banco_java";
     private String usuario = "root";
-    private String password = "a996104003@";
+    private String password = "senha";
     private Connection connection;
 
     public boolean conectar() {
@@ -124,13 +124,6 @@ public class Banco {
 
 
         if (linhasAfetadas >0) {
-            var resultado = connection.prepareStatement("SELECT SALDO FROM CONTA WHERE ID = ?");
-            resultado.setInt(1, idCliente);
-            var resultadoRetorno = resultado.executeQuery();
-            if (resultadoRetorno.next()) {
-                double saldoR = resultadoRetorno.getDouble("SALDO");
-                System.out.println("Deposito Concluido, no valor de R$: " + valor + " Saldo R$:" + saldoR);
-            }
             return true;
         }
     } catch (SQLException e){
@@ -150,7 +143,6 @@ public class Banco {
 
             if (resultado.next()) {
                 double saldoR = resultado.getDouble("SALDO");
-                System.out.println(saldoR);
                 return saldoR;
             }
         } catch (SQLException e){
@@ -170,8 +162,6 @@ public class Banco {
         int linhasAfetadas = comando.executeUpdate();
 
         if (linhasAfetadas >0) {
-            System.out.println("Saque efetuado com Sucesso");
-            System.out.println("Saldo Atual R$:" + buscarSaldo(idCliente));
             return true;
         }
     } catch (SQLException e){
