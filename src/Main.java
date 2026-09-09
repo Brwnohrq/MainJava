@@ -31,14 +31,11 @@ public class Main {
 
         Motos moto1 = new Motos("MOT-111", "Street", 100, true, 160);
         Motos moto2 = new Motos("MOT-222", "Naked", 180, true, 500);
-        Motos moto3 = new Motos("MOT-333", "Esportiva", 300, true, 1000);
-
         veiculos.add(carro1);
         veiculos.add(carro2);
         veiculos.add(carro3);
         veiculos.add(moto1);
         veiculos.add(moto2);
-        veiculos.add(moto3);
 
         double somaAluguel = 0;
     int quantidadeDisponiveis = 0;
@@ -52,8 +49,6 @@ public class Main {
         somaAluguel += veiculo.calcularValorAluguel(5);
 
     }
-
-
 
         System.out.println("Unidades Disponiveis: " + quantidadeDisponiveis + " |  "  + " Valor Total da Locacao " + somaAluguel
         );
