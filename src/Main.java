@@ -4,6 +4,6 @@ public class Main {
 
         Banco b = new Banco();
 
-        b.saque(1,100);
+        b.excluirCliente(1);
     }
 }

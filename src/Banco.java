@@ -15,7 +15,6 @@ public class Banco {
 
         try{
             connection = DriverManager.getConnection(url,username,password);
-            System.out.println("Connection Established");
             return true;
         } catch (SQLException e){
             System.out.println(e.getMessage());
@@ -35,7 +34,6 @@ public class Banco {
             int linhasAfetadas = comando.executeUpdate();
 
             if (linhasAfetadas >0){
-                System.out.println("Registration successful.");
                 return true;
             }
 
@@ -45,9 +43,9 @@ public class Banco {
         return false;
     }
 
-    public boolean buscarCliente (int idCliente) {
+    public String buscarCliente (int idCliente) {
         if (!conectar()) {
-            return false;
+            return null;
         }
         try {
             var comando = connection.prepareStatement("SELECT * FROM Cliente WHERE id = ?");
@@ -57,14 +55,14 @@ public class Banco {
                 String nome = resultado.getString("NOME");
                 String cpf = resultado.getString("CPF");
                 int idRetorno = resultado.getInt("ID");
-                System.out.printf("Nome %s CPF: %s ID: %d ",nome,cpf,idRetorno);
-            return true;
+                String texto = String.format("Nome: %s CPF: %s ID %d" , nome, cpf,idRetorno);
+            return texto;
             }
 
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }
-        return false;
+        return null;
     }
 
     public boolean criarConta (int idCliente, double saldo) {
@@ -79,7 +77,6 @@ public class Banco {
             int linhasAfetadas = comando.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Successful");
                 return true;
             }
         } catch (SQLException e) {
@@ -88,9 +85,9 @@ public class Banco {
         return false;
     }
 
-    public boolean buscarConta(int idCliente) {
+    public String buscarConta(int idCliente) {
         if (!conectar()) {
-            return false;
+            return null;
         }
         try {
             var comando = connection.prepareStatement("SELECT * FROM Conta WHERE ID_CLIENTE = ?");
@@ -102,13 +99,13 @@ public class Banco {
                 int idClienteRetorno = resultado.getInt("ID_CLIENTE");
 
                 double saldo = resultado.getDouble("SALDO");
-                System.out.printf("ID: %d ID_CLIENTE: %d  SALDO RS$: %.2f",id,idClienteRetorno,saldo);
-                return true;
+                String texto = String.format("ID: %d ID_CLIENTE: %d  SALDO RS$: %.2f",id,idClienteRetorno,saldo);
+                return texto;
             }
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }
-        return false;
+        return null;
     }
 
     public double buscarSaldo(int idCliente){
@@ -121,11 +118,7 @@ public class Banco {
             var resultado = comando.executeQuery();
 
             if (resultado.next()) {
-                int id = resultado.getInt("ID");
-                int idClienteRetorno = resultado.getInt("ID_CLIENTE");
-
                 double saldo = resultado.getDouble("SALDO");
-                System.out.printf("ID: %d ID_CLIENTE: %d  SALDO RS$: %.2f", id, idClienteRetorno, saldo);
                 return saldo;
             }
         } catch (SQLException e){
@@ -134,12 +127,12 @@ public class Banco {
         return -1;
     }
 
-    public boolean depositar(int idCliente, double valor){
+    public double depositar(int idCliente, double valor){
         if (!conectar()){
-            return false;
+            return -1;
         }
         if (valor <=0){
-            return false;
+            return -1;
         }
 
         try {
@@ -150,26 +143,23 @@ public class Banco {
             int linhasAfetadas = comando.executeUpdate();
 
             if (linhasAfetadas >0){
-                System.out.println("Deposit Successful");
-                System.out.println("SALDO ATUAL:");
-                buscarSaldo(idCliente);
-                return true;
+                return buscarSaldo(idCliente);
 
             }
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }
-        return false;
+        return -1;
     }
 
-    public boolean saque(int idCliente, double valor){
+    public double saque(int idCliente, double valor){
         if (!conectar()){
-            return false;
+            return -1;
         }
         double saldoo = buscarSaldo(idCliente);
 
         if (valor <=0 || valor > saldoo){
-            return false;
+            return -1;
         }
         try {
             var comando = connection.prepareStatement("UPDATE Conta SET SALDO = SALDO - ? WHERE ID_CLIENTE = ?");
@@ -178,7 +168,24 @@ public class Banco {
 
             int linhasAfetadas = comando.executeUpdate();
             if (linhasAfetadas > 0) {
-                System.out.println("Saque Sucessfull");
+                return buscarSaldo(idCliente);
+            }
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return -1;
+    }
+
+    public boolean excluirCliente (int idCliente){
+        if (!conectar()){
+            return false;
+        }
+        try {
+            var comando = connection.prepareStatement("DELETE FROM CLIENTE WHERE ID = ?");
+            comando.setInt(1, idCliente);
+            int linhasAfetadas = comando.executeUpdate();
+
+            if (linhasAfetadas > 0) {
                 return true;
             }
         } catch (SQLException e){
@@ -186,6 +193,5 @@ public class Banco {
         }
         return false;
     }
-
 
 }
