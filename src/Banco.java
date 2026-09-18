@@ -266,7 +266,7 @@ public class Banco {
                 int ID = resultado.getInt("ID");
                 String nomeRetorno = resultado.getString("NOME");
                 String cpfRetorno = resultado.getString("CPF");
-                String texto = String.format("ID: %d Nome: %s CPF: %s ",ID,nomeRetorno,cpfRetorno);
+                String texto = String.format("ID: %d Nome: %s CPF: %s %n",ID,nomeRetorno,cpfRetorno);
                 clientes.add(texto);
             }
         } catch (SQLException e){
@@ -276,7 +276,7 @@ public class Banco {
 
     }
 
-    public ArrayList<String> mostrarConta (){
+    public ArrayList<String> mostrarConta (int idCliente){
         if (!conectar()){
             return null;
         }
@@ -288,7 +288,7 @@ public class Banco {
         while (resultado.next()) {
             int id = resultado.getInt("ID");
             double saldo = resultado.getDouble("SALDO");
-            int idCliente = resultado.getInt("ID_CLIENTE");
+            idCliente = resultado.getInt("ID_CLIENTE");
             boolean ativado = resultado.getBoolean("ATIVADO");
             String texto = String.format("ID: %d SALDO: %.2f ID CLIENTE: %d CONTA ATIVA: %s",id,saldo,idCliente,ativado);
             conta.add(texto);

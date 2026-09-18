@@ -50,15 +50,23 @@ public class CaixaEletronico {
                     break;
 
                 case 9:
+                    excluirClienteFluxo();
+                    break;
 
                 case 10:
+                    desativarContaFluxo();
+                    break;
 
                 case 11:
+                    mostrarClientes();
+                    break;
 
                 case 12:
+                    mostrarContaFluxo();
+                    break;
 
                 case 13:
-
+                    System.out.println("Saindo do Aplicativo");
                     rodarWhile = false;
                     break;
 
@@ -307,7 +315,99 @@ public class CaixaEletronico {
 
             }
 
+
+
+            public boolean excluirClienteFluxo(){
+            boolean quiserExcluir = menus.opcaoEscolha(sc,"Deseja Excluir Cliente?");
+            if (!quiserExcluir){
+                return false;
+            }
+            int excluirId = menus.pedirId(sc);
+            String mostrarCliente = banco.buscarCliente(excluirId);
+            if (mostrarCliente == null){
+                System.out.println("Cliente nao encontrado");
+                return false;
+
+            }
+                System.out.println(mostrarCliente);
+
+            boolean excluirCliente = menus.opcaoEscolha(sc,"Deseja Exluir esse cliente?");
+            if (!excluirCliente) {
+                System.out.println("Cliente nao excluido voltando ao menu");
+                return false;
+            }
+                if (!banco.excluirCliente(excluirId)) {
+                    System.out.println("Cliente nao foi excluido, tente novamente");
+                    return false;
+                }
+
+                System.out.println("Cliente excluido com sucesso");
+                return true;
+
+            }
+
+            public boolean desativarContaFluxo(){
+            boolean quiserDesativar = menus.opcaoEscolha(sc,"Deseja Desativar a conta?");
+            if (!quiserDesativar){
+                System.out.println("Voltando ao Menu");
+                return false;
+            }
+            Integer idDesativar = menus.pedirId(sc);
+            if (idDesativar == null){
+                return false;
+            }
+            String verIdDesativar = banco.buscarConta(idDesativar);
+            if (verIdDesativar == null){
+                System.out.println("Conta nao existe, voltando ao menu");
+                return false;
+            }
+                System.out.println(verIdDesativar);
+            boolean quiserInativar = menus.opcaoEscolha(sc,"Deseja inativar essa conta?");
+            if (!quiserInativar){
+                System.out.println("Voltando ao menu");
+                return false;
+            }
+            boolean inativando = banco.deletarConta(idDesativar);
+            if (!inativando){
+                System.out.println("Erro,Tente novamente mais tarde");
+                return false;
+            }
+                System.out.println("Conta Inativada com sucesso");
+            return true;
+
+            }
+
+            public boolean mostrarContaFluxo(){
+            boolean quiserMostrar = menus.opcaoEscolha(sc,"Deseja Mostrar Conta??");
+            if (!quiserMostrar){
+                System.out.println("Voltando ao menu");
+                return false;
+            }
+            int idConta = menus.pedirId(sc);
+            String verConta = banco.buscarConta(idConta);
+            if (verConta == null){
+                System.out.println("Conta nao encontrada");
+                return false;
+            }
+                System.out.println(verConta);
+            return true;
+            }
+
+
+
+            public boolean mostrarClientes(){
+            boolean desejaMostrar = menus.opcaoEscolha(sc,"Mostrar todos os clientes?");
+            if (!desejaMostrar){
+                return false;
+            } else {
+                System.out.println(banco.mostrarClientes());
+            return true;
+            }
+        }
+
+
     }
+
 
 
 
