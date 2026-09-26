@@ -1,24 +1,30 @@
 public class PagamentoPix extends Pagamento {
 
-
-    public PagamentoPix(double valorCompra, String nome) {
-        super(valorCompra, nome);
+    public PagamentoPix(String nome, double valorCompra) {
+        super(nome, valorCompra);
     }
 
-@Override
+
+    @Override
     public double calcularValorFinal(){
-        double descontoPix = getValorCompra() * 0.05;
-        double valorFinal = (getValorCompra() - descontoPix);
+        double valorDesconto = getValorCompra() * 0.09;
+        double valorFinal = getValorCompra() - valorDesconto;
         return valorFinal;
-        }
+    }
 
 
     @Override
     public boolean validar(){
-        double valor = getValorCompra();
-        if (valor <= 0){
+        if (getValorCompra() <= 0){
             return false;
         }
         return true;
     }
+    @Override
+    public String getTipo(){
+            String retorno = "Pix";
+            return retorno;
+        }
+
     }
+

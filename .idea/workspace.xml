@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7baa5315-05d6-44e2-8cbe-1cb414070d77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Caixa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pagamento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PagamentoBoleto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PagamentoCartao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PagamentoDinheiro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PagamentoPix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Banco.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CaixaEletronico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Caixa.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MenuUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pagamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pagamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PagamentoBoleto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PagamentoBoleto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PagamentoCartao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PagamentoCartao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PagamentoDinheiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PagamentoDinheiro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PagamentoPix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PagamentoPix.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="21" />
+    <option name="cachedIndexableFilesCount" value="22" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -45,61 +41,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000027057816" />
-      <entry key="MS500" value="1.0293368688552966" />
-      <entry key="S2" value="1.726761142491983" />
-      <entry key="S5" value="2.8132168606652517" />
-      <entry key="S10" value="4.200749321611397" />
-      <entry key="S30" value="7.015204924204614" />
-      <entry key="S60" value="9.133477331531132" />
-      <entry key="M2" value="13.045934246953651" />
-      <entry key="M5" value="24.172157910972146" />
-      <entry key="M10" value="38.2600148645395" />
-      <entry key="M15" value="47.64991846485278" />
-      <entry key="M30" value="62.11793366883341" />
-      <entry key="H1" value="76.10775869672166" />
-      <entry key="H2" value="114.65741475774298" />
-      <entry key="H4" value="193.83185575547475" />
-      <entry key="D1" value="601.9122744339098" />
-      <entry key="W1" value="3142.679376839751" />
+      <entry key="MS100" value="6.666794827378219E-14" />
+      <entry key="MS500" value="0.002318746845245431" />
+      <entry key="S2" value="0.3041767554124267" />
+      <entry key="S5" value="1.585118475410167" />
+      <entry key="S10" value="4.0297100723207" />
+      <entry key="S30" value="11.703020575463261" />
+      <entry key="S60" value="18.300064731660306" />
+      <entry key="M2" value="26.23572054058741" />
+      <entry key="M5" value="36.765715114446756" />
+      <entry key="M10" value="42.47037955627526" />
+      <entry key="M15" value="44.74724465509248" />
+      <entry key="M30" value="47.2510330579058" />
+      <entry key="H1" value="49.52132763038496" />
+      <entry key="H2" value="69.67240423226546" />
+      <entry key="H4" value="161.57536430920428" />
+      <entry key="D1" value="806.0604396668732" />
+      <entry key="W1" value="3457.347559051165" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="5.774277628940406E-5" />
-      <entry key="MS500" value="0.14200417414325978" />
-      <entry key="S2" value="0.6406849103988638" />
-      <entry key="S5" value="1.0694784767292642" />
-      <entry key="S10" value="1.5005690821544895" />
-      <entry key="S30" value="2.3874328222593815" />
-      <entry key="S60" value="3.4737025471466247" />
-      <entry key="M2" value="5.981065570919746" />
-      <entry key="M5" value="14.41951021460122" />
-      <entry key="M10" value="26.37468959529624" />
-      <entry key="M15" value="34.442539853439655" />
-      <entry key="M30" value="46.768530638839" />
-      <entry key="H1" value="57.36047822420706" />
-      <entry key="H2" value="79.69080532983762" />
-      <entry key="H4" value="122.82336772257725" />
-      <entry key="D1" value="352.73721398139713" />
-      <entry key="W1" value="1797.3521482318317" />
+      <entry key="MS100" value="1.0000035102373146" />
+      <entry key="MS500" value="1.081484170882681" />
+      <entry key="S2" value="1.802387188920275" />
+      <entry key="S5" value="3.046797181526647" />
+      <entry key="S10" value="4.701711274819052" />
+      <entry key="S30" value="9.107960354612276" />
+      <entry key="S60" value="13.06545687760191" />
+      <entry key="M2" value="18.237635185005715" />
+      <entry key="M5" value="24.9703635400364" />
+      <entry key="M10" value="28.48535689515772" />
+      <entry key="M15" value="29.864513312226375" />
+      <entry key="M30" value="31.366817452636752" />
+      <entry key="H1" value="32.73010877087849" />
+      <entry key="H2" value="44.834262486132424" />
+      <entry key="H4" value="98.85335272746208" />
+      <entry key="D1" value="467.72319622185296" />
+      <entry key="W1" value="1975.587372197001" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3744778744713166E-4" />
-      <entry key="MS500" value="0.25557048792838977" />
-      <entry key="S2" value="1.7916426699375723" />
-      <entry key="S5" value="3.529614686735048" />
-      <entry key="S10" value="5.45014544299325" />
-      <entry key="S30" value="9.25864707244988" />
-      <entry key="S60" value="12.510533306315217" />
-      <entry key="M2" value="18.95543660735686" />
-      <entry key="M5" value="38.53445025498456" />
-      <entry key="M10" value="64.58758634318139" />
-      <entry key="M15" value="82.05298230465186" />
-      <entry key="M30" value="108.86064602598151" />
-      <entry key="H1" value="133.4525816427398" />
-      <entry key="H2" value="194.33702244175305" />
-      <entry key="H4" value="316.6462474623978" />
-      <entry key="D1" value="954.6450121046167" />
-      <entry key="W1" value="4940.028286579016" />
+      <entry key="MS100" value="8.815256519064122E-5" />
+      <entry key="MS500" value="0.18538002152472816" />
+      <entry key="S2" value="1.5022330271274322" />
+      <entry key="S5" value="4.123622985867564" />
+      <entry key="S10" value="8.272555629855074" />
+      <entry key="S30" value="20.469316783419465" />
+      <entry key="S60" value="31.11135775244398" />
+      <entry key="M2" value="44.2899202339037" />
+      <entry key="M5" value="61.63080810175709" />
+      <entry key="M10" value="70.89428056202279" />
+      <entry key="M15" value="74.56842794733815" />
+      <entry key="M30" value="78.5948854448213" />
+      <entry key="H1" value="82.23942265130476" />
+      <entry key="H2" value="114.49871428285411" />
+      <entry key="H4" value="260.4204642043352" />
+      <entry key="D1" value="1273.7774290087557" />
+      <entry key="W1" value="5432.931321873592" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">

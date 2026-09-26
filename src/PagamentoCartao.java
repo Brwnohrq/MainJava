@@ -1,42 +1,44 @@
 public class PagamentoCartao extends Pagamento {
 
-private int numeroParcelas;
+    private int numeroParcelas;
 
-    public PagamentoCartao(double valorCompra, String nome, int numeroParcelas) {
-        super(valorCompra, nome);
+    public PagamentoCartao(String nome, double valorCompra, int numeroParcelas) {
+        super(nome, valorCompra);
         this.numeroParcelas = numeroParcelas;
     }
 
+
     @Override
-    public double calcularValorFinal() {
+    public double calcularValorFinal(){
         if (numeroParcelas <= 3){
-            return getValorCompra();
+            double total = getValorCompra();
+            return total;
         }
-
-        int parcelasComJuros = numeroParcelas -3;
-
-        double taxaDeJuros = getValorCompra() * 0.02;
-
-        double valorFinal = (parcelasComJuros * taxaDeJuros) + getValorCompra();
-        return valorFinal;
-
+        int parcelasComJuros = numeroParcelas - 3;
+        double valorJuros = getValorCompra() * 0.05;
+        double valorTotal = (parcelasComJuros * valorJuros + getValorCompra());
+        return valorTotal;
     }
 
-    public double valorParcela(){
-     double valorParcelado = calcularValorFinal() / numeroParcelas;
-        return valorParcelado;
-    }
 
     @Override
-    public boolean validar() {
-        if (numeroParcelas > 12) {
+    public  boolean validar(){
+        if (numeroParcelas <=0 || numeroParcelas >= 13){
             return false;
         }
         return true;
     }
 
 
+    public int getNumeroParcelas() {
+        return numeroParcelas;
+    }
 
-
+@Override
+    public String getTipo(){
+     String retorno = "Cartao";
+     return retorno;
+    }
 
 }
+

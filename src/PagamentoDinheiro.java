@@ -1,23 +1,30 @@
-public class PagamentoDinheiro extends Pagamento {
+public class PagamentoDinheiro extends  Pagamento{
 
-    public PagamentoDinheiro(double valorCompra, String nome) {
-        super(valorCompra, nome);
-    }
 
-    @Override
-    public double calcularValorFinal(){
-        double desconto = getValorCompra() * 0.08;
-        double valorComDesconto = getValorCompra() - desconto;
-        return valorComDesconto;
+    public PagamentoDinheiro(String nome, double valorCompra) {
+        super(nome, valorCompra);
     }
 
     @Override
     public boolean validar(){
-    double valor = getValorCompra();
-    if (valor <= 0){
-        return false;
+        if (getValorCompra() <= 0){
+            return false;
+        }
+        return true;
     }
-    return true;
+    @Override
+    public double calcularValorFinal(){
+        double desconto = getValorCompra() * 0.08;
+        double total = getValorCompra() - desconto;
+        return total;
     }
+
+    @Override
+    public String getTipo(){
+        String retorno = "Dinheiro";
+        return retorno;
+    }
+
+
 
 }
