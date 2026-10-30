@@ -5,19 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7baa5315-05d6-44e2-8cbe-1cb414070d77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AccountNotFoundException.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Banco.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Conta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SaldoInsuficienteException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ValorInvalidoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BlockSameID.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InvalidIdNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InvalidOrIncorrectValue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AccountNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Conta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InsufficientBalanceException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InvalidValueException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pagamento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PagamentoBoleto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PagamentoCartao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PagamentoDinheiro.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PagamentoPix.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="19" />
+    <option name="cachedIndexableFilesCount" value="20" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -47,61 +46,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="7.951208787249478E-234" />
-      <entry key="MS500" value="2.399311477362823E-47" />
-      <entry key="S2" value="2.213205077413193E-12" />
-      <entry key="S5" value="2.1777896275182783E-5" />
-      <entry key="S10" value="0.004700199915274403" />
-      <entry key="S30" value="0.2496328627400774" />
-      <entry key="S60" value="1.273681192789852" />
-      <entry key="M2" value="5.552369732518386" />
-      <entry key="M5" value="25.491612952201066" />
-      <entry key="M10" value="58.201254359787974" />
-      <entry key="M15" value="86.02145022377528" />
-      <entry key="M30" value="148.8004952721034" />
-      <entry key="H1" value="224.30400212284283" />
-      <entry key="H2" value="307.8169976037794" />
-      <entry key="H4" value="445.8640945355547" />
-      <entry key="D1" value="1367.2102397961305" />
-      <entry key="W1" value="4233.527248230128" />
+      <entry key="MS100" value="1.000009458610719" />
+      <entry key="MS500" value="1.1120311691526636" />
+      <entry key="S2" value="1.9020561300528946" />
+      <entry key="S5" value="2.6037277996198225" />
+      <entry key="S10" value="3.438329785983591" />
+      <entry key="S30" value="5.139043083991359" />
+      <entry key="S60" value="6.398551100657731" />
+      <entry key="M2" value="10.361401727474181" />
+      <entry key="M5" value="25.436984366418557" />
+      <entry key="M10" value="41.07982822410645" />
+      <entry key="M15" value="49.24877055430179" />
+      <entry key="M30" value="60.616855376641745" />
+      <entry key="H1" value="84.89791874845122" />
+      <entry key="H2" value="157.28633873227318" />
+      <entry key="H4" value="262.5755827371988" />
+      <entry key="D1" value="528.1349360930641" />
+      <entry key="W1" value="3284.1233421240904" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000073581998" />
-      <entry key="S2" value="1.0092617466195821" />
-      <entry key="S5" value="1.1537886772424504" />
-      <entry key="S10" value="1.4075004921948568" />
-      <entry key="S30" value="2.4069721955115178" />
-      <entry key="S60" value="4.33129787316754" />
-      <entry key="M2" value="9.171382365470654" />
-      <entry key="M5" value="24.971544027737792" />
-      <entry key="M10" value="46.84194450441498" />
-      <entry key="M15" value="63.806211386305705" />
-      <entry key="M30" value="97.45007752943648" />
-      <entry key="H1" value="131.61123262355983" />
-      <entry key="H2" value="166.61772470196195" />
-      <entry key="H4" value="231.497499508014" />
-      <entry key="D1" value="728.6799866661988" />
-      <entry key="W1" value="2350.4115718896683" />
+      <entry key="MS100" value="5.296595129350204E-13" />
+      <entry key="MS500" value="0.0035058994747679648" />
+      <entry key="S2" value="0.25081268232891196" />
+      <entry key="S5" value="0.8539350481492942" />
+      <entry key="S10" value="1.8634673332853253" />
+      <entry key="S30" value="3.881266657985372" />
+      <entry key="S60" value="5.179753613632539" />
+      <entry key="M2" value="8.760410016390217" />
+      <entry key="M5" value="22.587729283785226" />
+      <entry key="M10" value="37.587507886108" />
+      <entry key="M15" value="45.6664100764803" />
+      <entry key="M30" value="56.88128064309787" />
+      <entry key="H1" value="76.19191441917162" />
+      <entry key="H2" value="128.60687372342036" />
+      <entry key="H4" value="203.58358920481734" />
+      <entry key="D1" value="387.56413976050874" />
+      <entry key="W1" value="1955.3858110381505" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0040721318782856305" />
-      <entry key="MS500" value="0.33263226120667283" />
-      <entry key="S2" value="0.7649677802330085" />
-      <entry key="S5" value="1.0209367917856262" />
-      <entry key="S10" value="1.3192529269126563" />
-      <entry key="S30" value="2.599715988445935" />
-      <entry key="S60" value="5.5522977821705695" />
-      <entry key="M2" value="14.658324591586387" />
-      <entry key="M5" value="50.37760616181719" />
-      <entry key="M10" value="104.954695101674" />
-      <entry key="M15" value="149.74348559887838" />
-      <entry key="M30" value="246.18195423161674" />
-      <entry key="H1" value="355.8663827456706" />
-      <entry key="H2" value="474.40292275168554" />
-      <entry key="H4" value="677.3399043848378" />
-      <entry key="D1" value="2095.8799694316945" />
-      <entry key="W1" value="6583.934409943971" />
+      <entry key="MS100" value="0.8950258957581809" />
+      <entry key="MS500" value="1.0523211951946143" />
+      <entry key="S2" value="2.0002253976458206" />
+      <entry key="S5" value="3.2901322891490463" />
+      <entry key="S10" value="5.1268605686542825" />
+      <entry key="S30" value="8.892500941031631" />
+      <entry key="S60" value="11.488890749141504" />
+      <entry key="M2" value="19.035190354920186" />
+      <entry key="M5" value="47.924114169620054" />
+      <entry key="M10" value="78.58330507392346" />
+      <entry key="M15" value="94.84748620616317" />
+      <entry key="M30" value="117.45640351906758" />
+      <entry key="H1" value="161.06251715470324" />
+      <entry key="H2" value="285.87092827366297" />
+      <entry key="H4" value="466.14185705412063" />
+      <entry key="D1" value="915.6937045926194" />
+      <entry key="W1" value="5239.5054128608235" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -182,5 +181,21 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Banco.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Banco.java</url>
+          <line>194</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
